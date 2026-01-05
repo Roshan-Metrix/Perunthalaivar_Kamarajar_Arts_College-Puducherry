@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities - Kalitheerthalkuppam College</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        body {
+  font-family: "Inter", sans-serif;
+  background-color: #f1f5f9;
+}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #FFD700;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        /* Activities Grid */
+        .activities-section {
+            padding: 4rem 0;
+            background: white;
+            margin-top: 2rem;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 0.8s ease forwards;
+        }
+
+        .activity-card:nth-child(1) { animation-delay: 0.1s; }
+        .activity-card:nth-child(2) { animation-delay: 0.2s; }
+        .activity-card:nth-child(3) { animation-delay: 0.3s; }
+        .activity-card:nth-child(4) { animation-delay: 0.4s; }
+        .activity-card:nth-child(5) { animation-delay: 0.5s; }
+        .activity-card:nth-child(6) { animation-delay: 0.6s; }
+        .activity-card:nth-child(7) { animation-delay: 0.7s; }
+        .activity-card:nth-child(8) { animation-delay: 0.8s; }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .activity-card:hover::before {
+            left: 100%;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .activity-card:hover .activity-icon::after {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        .activity-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .activity-description {
+            color: #666;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .activity-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .learn-more-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learn-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+
+        .learn-more-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .learn-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .activity-card {
+                padding: 1.5rem;
+            }
+
+            .nav {
+                display: none;
+            }
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white"/></svg>') repeat;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+    
+        .navbar {
+            background-color: #1E3A8A;
+        }
+    
+        .hero-slide {
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1s ease-in-out;
+        }
+    
+        .nav-link {
+            transition: color 0.3s ease;
+            font-size: 1rem;
+            padding: 0.5rem 0.5rem;
+            white-space: nowrap;
+        }
+    
+        .relative {
+            position: relative;
+            color: #1E3A8A;
+        }
+    
+        .nav-link:hover {
+            color: #FBBF24;
+        }
+    
+        .nav-link.active {
+            color: #FBBF24;
+            transform: translateY(-2px);
+        }
+    
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee-scroll 30s linear infinite;
+        }
+    
+        @keyframes marquee-scroll {
+            0% {
+                transform: translateX(0);
+            }
+    
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+    
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        .banner {
+            width: 100%;
+            height: 250px;
+            display: block;
+            object-fit: cover;
+        }
+    
+        .modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+ <!--  HEADER  -->
+        <header class="bg-white shadow-md relative z-50">
+
+            <img src="../images/banner.jpeg" class="w-full h-40 object-cover"
+                alt="College Banner">
+            <!--  MARQUEE  -->
+            <div class="marquee-container py-2">
+                <p class="marquee-text text-stone-700">
+                    Admissions Open 2025 • NAAC Accreditation • Excellence in
+                    Arts & Science Education
+                </p>
+            </div>
+
+            <div class="container mx-auto px-6 py-3 relative z-50">
+                <div class="flex justify-between items-center">
+                    <div></div>
+                    <button id="mobile-menu-button" class="md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- <hr class="my-1 hidden md:block"> -->
+
+                <!-- DESKTOP NAV -->
+                <nav
+                    class="hidden md:flex justify-center items-center pt-2 color-blue-600">
+                    <div class="flex items-center justify-center flex-wrap gap-x-4 gap-y-2"
+                        id="navbar">
+                        <a href="./index.html"
+                            class="nav-link text-gray-600 font-medium">Home</a>
+
+                        <!-- About Us Dropdown -->
+                        <div class="relative group">
+                            <a href="./about.html"
+                                class="nav-link text-gray-600 font-medium flex items-center">
+                                <span>About us</span>
+                                <svg
+                                    class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <div
+                                class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                                <div class="py-1">
+                                    <a href="./about.html#vision-mission"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vision
+                                        & Mission</a>
+                                    <a href="./about.html#principal-desk"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Principal
+                                        Desk</a>
+                                    <a href="./sample23.html"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Office
+                                        Administration</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RTI</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Departments Dropdown -->
+                        <a href="./faculty.html"
+                            class="nav-link text-gray-600 font-medium">Faculty</a>
+
+                        <!-- Admission Dropdown -->
+                        <div class="relative group">
+                            <a href="#"
+                                class="nav-link text-gray-600 font-medium flex items-center">
+                                <span>Admission</span>
+                                <svg
+                                    class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <div
+                                class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                                <div class="py-1">
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Admission
+                                        Process</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">View
+                                        Prospectus</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                        Rules & Regulation</a>
+                                    <a href="./calender.html"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Calender</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="./courses.html"
+                            class="nav-link text-gray-600 font-medium">Courses</a>
+
+                        <!-- Infrastructure Dropdown -->
+                        <div class="relative group">
+                            <a href="./infrastructure.html"
+                                class="nav-link text-gray-600 font-medium flex items-center">
+                                <span>Infrastructure</span>
+                                <svg
+                                    class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <div
+                                class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                                <div class="py-1">
+                                    <a href="./infrastructure.html#library"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Library</a>
+                                    <a href="./infrastructure.html#computer-lab"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Computer
+                                        Laboratory</a>
+                                    <a href="./infrastructure.html#playground"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Play
+                                        Ground</a>
+                                    <a href="./infrastructure.html#auditorium"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Auditorium</a>
+                                    <a href="./infrastructure.html#campus-life"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vibrant
+                                        Campus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ACTIVITIES Dropdown -->
+                        <div class="relative group">
+                            <a href="#"
+                                class="nav-link text-gray-600 font-medium flex items-center">
+                                <span>ACTIVITIES</span>
+                                <svg
+                                    class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <div
+                                class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                                <div class="py-1">
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NIRF</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">ARIIA</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                        Guidance & Placement Cell</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Rotaract
+                                        club</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NSS</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RUSA</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Red
+                                        Ribbon club</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Youth
+                                        Red Cross</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Report Dropdown -->
+                        <div class="relative group">
+                            <a href="#"
+                                class="nav-link text-gray-600 font-medium flex items-center">
+                                <span>Reports</span>
+                                <svg
+                                    class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <div
+                                class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                                <div class="py-1">
+                                    <a href="../pdfs/Naac.pdf"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NAAC</a>
+                                    <a href="../pdfs/LOA Report 24-25.pdf"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="./index.html#contact"
+                            class="nav-link text-gray-600 font-medium">Contact
+                            us</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- MOBILE MENU -->
+            <div id="mobile-menu"
+                class="hidden md:hidden bg-white border-t relative z-50">
+                <a href="./index.html"
+                    class="block px-4 py-2 hover:bg-gray-100">Home</a>
+                <a href="./about.html"
+                    class="block px-4 py-2 hover:bg-gray-100">About Us</a>
+                <a href="./faculty.html"
+                    class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
+                <a href="./courses.html"
+                    class="block px-4 py-2 hover:bg-gray-100">Courses</a>
+                <a href="../pdfs/Naac.pdf"
+                    class="block px-4 py-2 hover:bg-gray-100">NAAC</a>
+                <a href="./index.html#contact"
+                    class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+            </div>
+        </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="floating">Student Activities</h1>
+            <p>Empowering students through diverse co-curricular and extracurricular activities that foster holistic development, leadership skills, and community engagement.</p>
+        </div>
+    </section>
+
+    <section class="activities-section">
+        <div class="container">
+            <h2 class="section-title">Our Activities</h2>
+            
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">🏛️</div>
+                    <h3 class="activity-title">NIRF</h3>
+                    <p class="activity-description">National Institutional Ranking Framework initiatives and quality improvement programs.</p>
+                    <ul class="activity-features">
+                        <li>Quality benchmarking</li>
+                        <li>Academic excellence programs</li>
+                        <li>Research development</li>
+                        <li>Infrastructure enhancement</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🎯</div>
+                    <h3 class="activity-title">ARIIA</h3>
+                    <p class="activity-description">Atal Ranking of Institutions on Innovation Achievements promoting innovation and entrepreneurship.</p>
+                    <ul class="activity-features">
+                        <li>Innovation programs</li>
+                        <li>Startup incubation</li>
+                        <li>Entrepreneurship training</li>
+                        <li>Research commercialization</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🎓</div>
+                    <h3 class="activity-title">College Guidance & Placement Cell</h3>
+                    <p class="activity-description">Comprehensive career guidance and placement support for students' professional development.</p>
+                    <ul class="activity-features">
+                        <li>Career counseling</li>
+                        <li>Industry partnerships</li>
+                        <li>Skill development</li>
+                        <li>Job placement assistance</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">⚙️</div>
+                    <h3 class="activity-title">Rotaract Club</h3>
+                    <p class="activity-description">Community service and leadership development through Rotaract International programs.</p>
+                    <ul class="activity-features">
+                        <li>Community service projects</li>
+                        <li>Leadership training</li>
+                        <li>Social awareness campaigns</li>
+                        <li>International networking</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🛡️</div>
+                    <h3 class="activity-title">NSS</h3>
+                    <p class="activity-description">National Service Scheme promoting social responsibility and community development among students.</p>
+                    <ul class="activity-features">
+                        <li>Village adoption programs</li>
+                        <li>Environmental conservation</li>
+                        <li>Health awareness camps</li>
+                        <li>Disaster relief activities</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🇷🇺</div>
+                    <h3 class="activity-title">RUSA</h3>
+                    <p class="activity-description">Rashtriya Uchchatar Shiksha Abhiyan for higher education development and infrastructure improvement.</p>
+                    <ul class="activity-features">
+                        <li>Infrastructure development</li>
+                        <li>Faculty enhancement</li>
+                        <li>Research facilities</li>
+                        <li>Digital initiatives</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🎀</div>
+                    <h3 class="activity-title">Red Ribbon Club</h3>
+                    <p class="activity-description">Health awareness and HIV/AIDS prevention programs promoting healthy lifestyle choices.</p>
+                    <ul class="activity-features">
+                        <li>Health awareness campaigns</li>
+                        <li>HIV/AIDS education</li>
+                        <li>Blood donation drives</li>
+                        <li>Wellness programs</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">❤️</div>
+                    <h3 class="activity-title">Youth Red Cross</h3>
+                    <p class="activity-description">Humanitarian service and disaster management training through Red Cross youth programs.</p>
+                    <ul class="activity-features">
+                        <li>First aid training</li>
+                        <li>Disaster preparedness</li>
+                        <li>Blood donation</li>
+                        <li>Community health services</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add interactive hover effects
+        document.querySelectorAll('.activity-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.03)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click effects to buttons
+        document.querySelectorAll('.learn-more-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.activity-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

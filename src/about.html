@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Perunthalaivar Kamarajar Arts College</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        .banner {
+            width: 100%;
+            height: 250px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typewriter-scroll {
+            min-height: 24px;
+            /* Adjusted min-height for list items and paragraphs */
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            display: inline-block;
+            animation: blink-caret 0.75s step-end infinite;
+            color: #3B82F6;
+            font-weight: bold;
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        #hero-section {
+            background: linear-gradient(-45deg, #1d4ed8, #3b82f6, #60a5fa, #2563eb);
+            background-size: 400% 400%;
+            animation: gradient-bg 15s ease infinite;
+        }
+
+        @keyframes gradient-bg {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .member-card,
+        .person-image {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            cursor: pointer;
+        }
+
+        .member-card:hover,
+        .person-image:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+        }
+
+        /* Modal Styles */
+        #person-modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  HEADER  -->
+    <header class="bg-white shadow-md relative z-50">
+
+        <img src="../images/banner.jpeg" class="w-full h-40 object-cover" alt="College Banner">
+        <!--  MARQUEE  -->
+        <div class="marquee-container py-2">
+            <p class="marquee-text text-stone-700">
+                Admissions Open 2026 &nbsp; • &nbsp;Re-Accredited by NAAC with 'B' Grade &nbsp; • &nbsp; Excellence in
+                Arts & Science Education
+            </p>
+        </div>
+
+        <div class="container mx-auto py-3 relative z-50">
+            <div class="flex justify-between items-center">
+                <div></div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:flex justify-center items-center pt-2 color-blue-600">
+                <div class="flex items-center justify-center flex-wrap gap-x-5 gap-y-2" id="navbar">
+                    <a href="./index.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Home</a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="relative group">
+                        <a href="./about.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>About us</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./about.html#vision-mission"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vision
+                                    & Mission</a>
+                                <a href="./about.html#principal-desk"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Principal
+                                    Desk</a>
+                                <a href="./officeAdmin.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Office
+                                    Administration</a>
+                                <a href="./RTI.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RTI</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Departments Dropdown -->
+                    <a href="./faculty.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Faculty</a>
+
+                    <!-- Admission Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Admission</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Admission
+                                    Process</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">View
+                                    Prospectus</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Rules & Regulation</a>
+                                <a href="./calender.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Calender</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./courses.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Courses</a>
+
+                    <!-- Infrastructure Dropdown -->
+                    <div class="relative group">
+                        <a href="./infrastructure.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Infrastructure</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./infrastructure.html#library"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Library</a>
+                                <a href="./infrastructure.html#computer-lab"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Computer
+                                    Laboratory</a>
+                                <a href="./infrastructure.html#playground"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Play
+                                    Ground</a>
+                                <a href="./infrastructure.html#auditorium"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Auditorium</a>
+                                <a href="./infrastructure.html#campus-life"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vibrant
+                                    Campus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVITIES Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Activities</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NIRF</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">ARIIA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Guidance & Placement Cell</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Rotaract
+                                    club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NSS</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RUSA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Red
+                                    Ribbon club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Youth
+                                    Red Cross</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Reports</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="../pdfs/Naac.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NAAC</a>
+                                <a href="../pdfs/LOA Report 24-25.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="./gallery.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a>
+                    <a href="./index.html#contact"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Contact
+                        us</a>
+                    <a href="https://student-registration-frontend-nine.vercel.app/login"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white" target="_blank">Login</a>
+                </div>
+            </nav>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t relative z-50">
+            <a href="./index.html" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+            <a href="./about.html" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
+            <a href="./faculty.html" class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
+            <a href="./courses.html" class="block px-4 py-2 hover:bg-gray-100">Courses</a>
+            <a href="../pdfs/Naac.pdf" class="block px-4 py-2 hover:bg-gray-100">NAAC</a>
+            <a href="./index.html#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+        </div>
+
+    </header>
+
+    <main>
+        <section id="home" class="py-5 bg-white">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Welcome to
+                    Perunthalaivar Kamarajar Arts College</h2>
+                <div class="max-w-4xl mx-auto text-left text-gray-600 text-lg space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Our
+                            Vision</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li class="typewriter-scroll"
+                                data-text="To impart quality education and to produce employable rural students"></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Our
+                            Mission</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li class="typewriter-scroll"
+                                data-text="To provide in-depth knowledge in fundamentals to rural students, to improve the learning and analytical skills.">
+                            </li>
+                            <li class="typewriter-scroll"
+                                data-text="To develop the overall personality of the students and to mould them into good citizens with integrity.">
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">THE
+                            INSTITUTION</h3>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">Perunthalaivar
+                            kamarajar Arts College is an institution for
+                            rural students with a glorious history dating
+                            back to June 1998. It took off with two courses
+                            viz., B.A. (Functional Tamil), B.Sc
+                            (Mathematics), and was then housed in Kalaignar
+                            Karunanithi Govt. Higher Secondary School.</p>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">Foundation
+                            Stone for the new building was laid in October
+                            2002, with the Honorable Lieutenant Governor,
+                            K.R.Malkani and the then Chief Minister of
+                            Puducherry, Thiru N.Rangasamy. The college was
+                            shifted to this campus in the year 2004 on
+                            completion of the state of art infrastructure.
+                            BBA was introduced in the year 2005-2006. B.Com
+                            & BCA were started in the year 2010-2011. </p>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">Seventy five
+                            percent of admissions are reserved for students
+                            hailing from rural areas. The college well ahead
+                            of development has 2f status and 12B status from
+                            UGC.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="principal-desk" class="py-20 bg-white">
+            <div class="container mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/3 text-center">
+                        <img src="../images/Principal_Ex.jpeg" alt="College Principal"
+                            class="person-image rounded-full shadow-lg w-64 h-64 mx-auto object-cover clickable-person"
+                            data-name="Principal's Name" data-title="Principal"
+                            data-img-src="https://placehold.co/600x600/FFFBEB/FBBF24?text=Principal"
+                            data-message="Welcome to Perunthalaivar Kamarajar Arts College. We believe in the transformative power of education. Our dedicated faculty and staff are here to guide you on your journey of discovery, helping you to unlock your full potential and achieve your dreams. We look forward to a productive and inspiring academic year with you.">
+                    </div>
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4 typewriter-scroll"
+                            data-text="From the Principal's Desk"></h2>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">Education is
+                            not just about imparting knowledge but about
+                            nurturing values, character, and life skills. At
+                            Perunthalaivar Kamarajar Arts College, we strive
+                            to provide a holistic learning environment that
+                            empowers our students to face the challenges of
+                            the modern world. </p>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">
+                            Our vision is to impart quality education and
+                            produce employable rural students who can
+                            contribute meaningfully to society. We firmly
+                            believe that true education lies in developing
+                            integrity, morality, and analytical thinking in
+                            our learners.</p>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">
+                            The institution has grown steadily since its
+                            inception in 1998, expanding its academic
+                            horizons with new courses, state-of-the-art
+                            infrastructure, and dedicated faculty members.
+                            Our focus has always been on uplifting rural
+                            students and ensuring they have access to equal
+                            opportunities for growth.</p>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">
+                            We encourage our students to excel not only in
+                            academics but also in co-curricular and
+                            extracurricular activities, thereby shaping them
+                            into well-rounded personalities. Our faculty
+                            members constantly inspire, motivate, and guide
+                            students towards excellence.</p>
+                        <p align="justify" class="text-gray-600 mb-4 text-lg">
+                            As we continue to progress, our commitment
+                            remains firm—to mould our students into
+                            responsible citizens who uphold values of
+                            discipline, dignity, and service. With the
+                            cooperation of staff, students, parents, and
+                            well-wishers, we are confident of achieving
+                            greater heights in the years to come.
+                        </p>
+                        <p style="font-size:20px" class="text-gray-800 font-semibold"> - Dr. S.
+                            Kanaga Vel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-300 py-4 border-t-4 border-amber-700">
+        <div class="container mx-auto px-6 text-center flex flex-col items-center space-y-4">
+            <img src="../images/logo.jpg" alt="Perunthalaivar Kamarajar Arts College Logo"
+                class="h-16 w-16 object-contain bg-white p-1 rounded-full">
+            <h3 class="text-lg font-semibold tracking-wide">
+                Perunthalaivar Kamarajar Arts College
+            </h3>
+            <p class="text-sm text-gray-400">Pondicherry, India</p>
+            <div class="flex space-x-6 pt-2">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"
+                    class="text-gray-400 hover:text-blue-500 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24h11.495v-9.294H9.691V11.01h3.129V8.309c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.796.716-1.796 1.764v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.4 24 24 23.4 24 22.676V1.325C24 .6 23.4 0 22.675 0z" />
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"
+                    class="text-gray-400 hover:text-sky-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.924 0 .39.045.765.127 1.124-4.092-.205-7.719-2.165-10.148-5.144-.424.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.6 3.419-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14-7.496 14-13.986 0-.21 0-.423-.016-.637.961-.689 1.8-1.56 2.46-2.548z" />
+                    </svg>
+                </a>
+                <a href="mailto:info@pkartscollege.edu.in" aria-label="Email"
+                    class="text-gray-400 hover:text-amber-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </a>
+
+            </div>
+            <p class="text-sm text-gray-400">
+                Email:
+                <a href="mailto:info@pkartscollege.edu.in" class="hover:text-amber-400 transition">
+                    info@pkartscollege.edu.in
+                </a>
+            </p>
+            <p class="text-xs text-gray-500 pt-4">
+                © 2025 Perunthalaivar Kamarajar Arts College. All Rights Reserved.
+            </p>
+
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="person-modal"
+        class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div id="modal-content"
+            class="bg-white rounded-lg shadow-2xl w-full max-w-3xl flex flex-col md:flex-row overflow-hidden transform scale-95 transition-transform duration-300">
+            <img id="modal-image" src alt="Person Photo" class="w-full md:w-1/2 h-64 md:h-auto object-cover">
+            <div class="p-8 flex flex-col justify-center">
+                <h3 id="modal-name" class="text-3xl font-bold text-gray-800"></h3>
+                <p id="modal-title" class="text-lg text-blue-600 mb-4"></p>
+                <p id="modal-message" class="text-gray-600 text-lg min-h-[100px]"></p>
+            </div>
+        </div>
+        <button id="modal-close-btn"
+            class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 transition">&times;</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            // --- Typewriter Function ---
+            function typewriterEffect(element, text, speed) {
+                if (element.dataset.typewriterIntervalId) {
+                    clearInterval(parseInt(element.dataset.typewriterIntervalId));
+                }
+                let i = 0;
+                element.innerHTML = "";
+                element.classList.add('typing-cursor');
+                const intervalId = setInterval(() => {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(intervalId);
+                        element.classList.remove('typing-cursor');
+                        delete element.dataset.typewriterIntervalId;
+                    }
+                }, speed);
+                element.dataset.typewriterIntervalId = intervalId.toString();
+            }
+            // --- Intersection Observer for Animations on Scroll ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('reveal')) {
+                            entry.target.classList.add('reveal-visible');
+                        }
+                        if (entry.target.classList.contains('typewriter-scroll')) {
+                            if (!entry.target.dataset.typed) {
+                                const textToType = entry.target.getAttribute('data-text');
+                                typewriterEffect(entry.target, textToType,
+                                    30); // Speed adjusted for readability
+                                entry.target.dataset.typed = "true";
+                            }
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+            document.querySelectorAll('.reveal, .typewriter-scroll').forEach(el => observer.observe(el));
+            // --- Modal Logic ---
+            const modal = document.getElementById('person-modal');
+            const modalContent = document.getElementById('modal-content');
+            const modalImage = document.getElementById('modal-image');
+            const modalName = document.getElementById('modal-name');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMessage = document.getElementById('modal-message');
+            const closeBtn = document.getElementById('modal-close-btn');
+            const clickablePeople = document.querySelectorAll('.clickable-person');
+
+            function openModal(name, title, imgSrc, message) {
+                modalName.textContent = name;
+                modalTitle.textContent = title;
+                modalImage.src = imgSrc;
+                modalMessage.textContent = '';
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                    typewriterEffect(modalMessage, message, 40);
+                }, 10);
+            }
+
+            function closeModal() {
+                modal.classList.add('opacity-0');
+                modalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    if (modalMessage.dataset.typewriterIntervalId) {
+                        clearInterval(parseInt(modalMessage.dataset.typewriterIntervalId));
+                        delete modalMessage.dataset.typewriterIntervalId;
+                    }
+                }, 300);
+            }
+            clickablePeople.forEach(person => {
+                person.addEventListener('click', (e) => {
+                    const data = e.currentTarget.dataset;
+                    openModal(data.name, data.title, data.imgSrc, data.message);
+                });
+            });
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

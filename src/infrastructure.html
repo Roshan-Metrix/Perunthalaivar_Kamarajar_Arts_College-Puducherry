@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Springfield High - Facilities</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        .dropdown-menu {
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        .section-card {
+            scroll-margin-top: 80px;
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            display: inline-block;
+            animation: blink 0.7s infinite;
+            font-weight: bold;
+            color: #f59e0b;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-content {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  HEADER  -->
+<header class="bg-white shadow-md relative z-50">
+
+        <img src="../images/banner.jpeg" class="w-full h-40 object-cover" alt="College Banner">
+        <!--  MARQUEE  -->
+        <div class="marquee-container py-2">
+            <p class="marquee-text text-stone-700">
+                Admissions Open 2026 &nbsp; • &nbsp;Re-Accredited by NAAC with 'B' Grade &nbsp; • &nbsp; Excellence in
+                Arts & Science Education
+            </p>
+        </div>
+
+        <div class="container mx-auto py-3 relative z-50">
+            <div class="flex justify-between items-center">
+                <div></div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:flex justify-center items-center pt-2 color-blue-600">
+                <div class="flex items-center justify-center flex-wrap gap-x-5 gap-y-2" id="navbar">
+                    <a href="./index.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Home</a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="relative group">
+                        <a href="./about.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>About us</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./about.html#vision-mission"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vision
+                                    & Mission</a>
+                                <a href="./about.html#principal-desk"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Principal
+                                    Desk</a>
+                                <a href="./officeAdmin.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Office
+                                    Administration</a>
+                                <a href="./RTI.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RTI</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Departments Dropdown -->
+                    <a href="./faculty.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Faculty</a>
+
+                    <!-- Admission Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Admission</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Admission
+                                    Process</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">View
+                                    Prospectus</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Rules & Regulation</a>
+                                <a href="./calender.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Calender</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./courses.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Courses</a>
+
+                    <!-- Infrastructure Dropdown -->
+                    <div class="relative group">
+                        <a href="./infrastructure.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Infrastructure</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./infrastructure.html#library"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Library</a>
+                                <a href="./infrastructure.html#computer-lab"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Computer
+                                    Laboratory</a>
+                                <a href="./infrastructure.html#playground"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Play
+                                    Ground</a>
+                                <a href="./infrastructure.html#auditorium"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Auditorium</a>
+                                <a href="./infrastructure.html#campus-life"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vibrant
+                                    Campus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVITIES Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Activities</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NIRF</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">ARIIA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Guidance & Placement Cell</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Rotaract
+                                    club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NSS</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RUSA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Red
+                                    Ribbon club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Youth
+                                    Red Cross</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Reports</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="../pdfs/Naac.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NAAC</a>
+                                <a href="../pdfs/LOA Report 24-25.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="./gallery.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a>
+                    <a href="./index.html#contact"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Contact
+                        us</a>
+                    <a href="https://student-registration-frontend-nine.vercel.app/login"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white"
+                        target="_blank">Login</a>
+                </div>
+            </nav>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t relative z-50">
+            <a href="./index.html" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+            <a href="./about.html" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
+            <a href="./faculty.html" class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
+            <a href="./courses.html" class="block px-4 py-2 hover:bg-gray-100">Courses</a>
+            <a href="../pdfs/Naac.pdf" class="block px-4 py-2 hover:bg-gray-100">NAAC</a>
+            <a href="./index.html#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+        </div>
+
+</header>
+    <!-- Main Content -->
+    <main>
+
+        <!-- Facilities Sections -->
+        <div class="container mx-auto px-6 py-12 md:py-20 space-y-16">
+
+            <!-- Library -->
+            <section id="library" class="section-card bg-white p-8 rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="w-full md:w-1/2 grid grid-cols-2 gap-4 mb-6 md:mb-0 md:mr-8 image-gallery"
+                        data-gallery-id="library">
+                        <img src="../infrastucture/library1.jpg" alt="Library Reading Area"
+                            class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="../infrastucture/library2.jpg" alt="Library Shelf View"
+                            class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Our
+                            Library</h2>
+                        <p class="text-gray-600 leading-relaxed min-h-[120px] description-text"
+                            data-text="Our library is a sanctuary for knowledge seekers, housing an extensive collection of books, journals, and digital resources. It provides a quiet and inspiring environment for students to study, research, and expand their horizons.">
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Computer Laboratory -->
+            <section id="computer-lab" class="section-card bg-white p-8 rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col md:flex-row-reverse items-center">
+                    <div class="w-full md:w-1/2 grid grid-cols-2 gap-4 mb-6 md:mb-0 md:ml-8 image-gallery"
+                        data-gallery-id="computer-lab">
+                        <img src="../infrastucture/lab.jpeg" alt="Computer Lab View"
+                            class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="../infrastucture/lab1.jpeg" alt="Coding Class"
+                            class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="../infrastucture/lab2.jpeg" alt="Coding Class"
+                            class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Computer
+                            Laboratory</h2>
+                        <p class="text-gray-600 leading-relaxed min-h-[120px] description-text"
+                            data-text="Equipped with the latest technology and high-speed internet, our computer lab provides students with the tools they need to excel in a digital world. We offer a range of software and a supportive environment for coding, design, and research.">
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Play Ground -->
+            <section id="playground" class="section-card bg-white p-8 rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="w-full md:w-1/2 grid grid-cols-2 gap-4 mb-6 md:mb-0 md:mr-8 image-gallery"
+                        data-gallery-id="playground">
+                        <img src="../infrastucture/Sport.JPG" alt="Football Field"
+                            class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="../infrastucture/sport1.jpeg" alt="Basketball Court"
+                            class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="../infrastucture/sport2.jpeg" alt="Students Playing"
+                            class="gallery-item col-span-2 h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="md:w/1/2">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Play
+                            Ground</h2>
+                        <p class="text-gray-600 leading-relaxed min-h-[120px] description-text"
+                            data-text="Physical education is vital for a balanced life. Our expansive playground offers facilities for various sports like cricket, football, and athletics, encouraging students to stay active, build teamwork, and embrace a healthy lifestyle.">
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Auditorium -->
+            <section id="campus-life"
+                class="section-card text-center bg-white p-8 rounded-xl shadow-lg overflow-hidden">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Vibrant
+                    Campus Life</h2>
+                <p class="text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">At
+                    Springfield High, education extends beyond the
+                    classroom. We foster a lively and inclusive community
+                    where students can explore their passions, develop new
+                    skills, and create lasting friendships.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+                    <!-- Student Clubs -->
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div
+                            class="flex items-center justify-center h-12 w-12 rounded-full bg-amber-100 text-amber-600 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-gray-800 mb-2">Student
+                            Clubs</h3>
+                        <p class="text-gray-600">From the Science Olympiad
+                            to the Drama Club and the school's cricket team,
+                            there's
+                            a place for everyone to shine and pursue their
+                            interests.</p>
+                    </div>
+                    <!-- Annual Events -->
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div
+                            class="flex items-center justify-center h-12 w-12 rounded-full bg-amber-100 text-amber-600 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-gray-800 mb-2">Annual
+                            Events</h3>
+                        <p class="text-gray-600">Our calendar is packed with
+                            exciting events like the Annual Sports Day, the
+                            'Spectra' cultural festival, and science
+                            exhibitions that bring our community
+                            together.</p>
+                    </div>
+                    <!-- Community & Culture -->
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div
+                            class="flex items-center justify-center h-12 w-12 rounded-full bg-amber-100 text-amber-600 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-gray-800 mb-2">Supportive
+                            Community</h3>
+                        <p class="text-gray-600">We cultivate a culture of
+                            respect, collaboration, and mutual support,
+                            ensuring
+                            every student feels valued and empowered to
+                            succeed.</p>
+                    </div>
+                </div>
+
+                <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-4 image-gallery" data-gallery-id="campus-life">
+                    <img src="https://placehold.co/400x300/fef3c7/333333?text=Cultural+Fest"
+                        alt="Students in a cultural festival"
+                        class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                    <img src="https://placehold.co/400x300/fde68a/333333?text=Sports+Day" alt="Annual sports day event"
+                        class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                    <img src="https://placehold.co/400x300/fcd34d/333333?text=Science+Fair"
+                        alt="Students at a science fair"
+                        class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                    <img src="https://placehold.co/400x300/fbbf24/333333?text=Group+Project"
+                        alt="Students collaborating on a project"
+                        class="gallery-item h-full w-full object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Springfield
+                        High</h3>
+                    <p class="text-gray-400">123 Education Lane,
+                        <br>Malayambakkam, Tamil Nadu, India</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About
+                                Us</a></li>
+                        <li><a href="#library" class="text-gray-400 hover:text-white">Facilities</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With
+                        Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M..."></path>
+                            </svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M..."></path>
+                            </svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M..."></path>
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 Springfield High. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="lightbox hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] opacity-0 pointer-events-none">
+        <div class="lightbox-content relative bg-white p-4 rounded-lg max-w-4xl max-h-[90vh] w-full transform scale-95">
+            <img id="lightbox-img" src class="w-full h-full object-contain" alt="Enlarged facility view">
+            <button id="lightbox-close"
+                class="absolute -top-4 -right-4 bg-white rounded-full p-2 text-gray-800 hover:bg-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <button id="lightbox-prev"
+                class="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 text-gray-800 hover:bg-opacity-75">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button id="lightbox-next"
+                class="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 text-gray-800 hover:bg-opacity-75">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+            <div id="lightbox-counter"
+                class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black bg-opacity-50 text-white text-sm px-3 py-1 rounded-full">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... existing menu and smooth scroll code ...
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Mobile facilities accordion
+            const accordionButton = document.getElementById('facilities-accordion-button');
+            const accordionContent = document.getElementById('facilities-accordion-content');
+            const accordionIcon = document.getElementById('accordion-icon');
+            accordionButton.addEventListener('click', () => {
+                accordionContent.classList.toggle('hidden');
+                accordionIcon.classList.toggle('rotate-180');
+            });
+            // Desktop dropdown menu (hover)
+            const dropdown = document.getElementById('facilities-dropdown-desktop');
+            const dropdownMenu = document.getElementById('facilities-menu-desktop');
+            dropdown.addEventListener('mouseenter', () => {
+                dropdownMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+                dropdownMenu.classList.add('opacity-100', 'translate-y-0');
+            });
+            dropdown.addEventListener('mouseleave', () => {
+                dropdownMenu.classList.remove('opacity-100', 'translate-y-0');
+                dropdownMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+            });
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+            // --- Typewriter Animation ---
+            function typewriter(element, speed = 40) {
+                // ... existing typewriter code ...
+                const text = element.getAttribute('data-text');
+                if (!text || element.dataset.animated) return;
+                element.dataset.animated = 'true';
+                element.innerHTML = "";
+                element.classList.add('typing-cursor');
+                let i = 0;
+
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        element.classList.remove('typing-cursor');
+                    }
+                }
+                type();
+            }
+            const animatedElements = document.querySelectorAll('.description-text');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        typewriter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.6
+            });
+            animatedElements.forEach(el => observer.observe(el));
+            // --- NEW: Lightbox Gallery Logic ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            const lightboxCounter = document.getElementById('lightbox-counter');
+            let galleries = {};
+            let currentGalleryId = null;
+            let currentIndex = 0;
+            // Populate galleries object
+            document.querySelectorAll('.image-gallery').forEach(gallery => {
+                const galleryId = gallery.dataset.galleryId;
+                const images = gallery.querySelectorAll('.gallery-item');
+                galleries[galleryId] = Array.from(images).map(img => img.src);
+            });
+
+            function showImage(galleryId, index) {
+                const galleryImages = galleries[galleryId];
+                if (!galleryImages || index < 0 || index >= galleryImages.length) {
+                    return;
+                }
+                currentIndex = index;
+                currentGalleryId = galleryId;
+                lightboxImg.src = galleryImages[currentIndex];
+                lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+                lightboxPrev.style.display = currentIndex > 0 ? 'block' : 'none';
+                lightboxNext.style.display = currentIndex < galleryImages.length - 1 ? 'block' : 'none';
+            }
+
+            function openLightbox(galleryId, index) {
+                lightbox.classList.remove('hidden');
+                setTimeout(() => {
+                    lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                    lightbox.querySelector('.lightbox-content').classList.remove('scale-95');
+                }, 10);
+                showImage(galleryId, index);
+            }
+
+            function closeLightbox() {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                lightbox.querySelector('.lightbox-content').classList.add('scale-95');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                }, 300);
+            }
+            // Add click listeners to all gallery items
+            document.querySelectorAll('.gallery-item').forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const galleryEl = item.closest('.image-gallery');
+                    const galleryId = galleryEl.dataset.galleryId;
+                    const itemIndex = Array.from(galleryEl.querySelectorAll('.gallery-item'))
+                        .indexOf(item);
+                    openLightbox(galleryId, itemIndex);
+                });
+            });
+            // Lightbox controls
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            lightboxPrev.addEventListener('click', () => showImage(currentGalleryId, currentIndex - 1));
+            lightboxNext.addEventListener('click', () => showImage(currentGalleryId, currentIndex + 1));
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') lightboxPrev.click();
+                    if (e.key === 'ArrowRight') lightboxNext.click();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

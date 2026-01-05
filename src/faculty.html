@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Profiles - Perunthalaivar Kamarajar Arts College</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        .profile-card {
+            display: flex;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .profile-card-image-wrapper {
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .profile-card-image {
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover .profile-card-image {
+            transform: scale(1.05);
+        }
+
+        #loader {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e2e8f0;
+            border-top: 5px solid #f59e0b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 40px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="text-gray-900">
+
+   <!--  HEADER  -->
+ <header class="bg-white shadow-md relative z-50">
+
+        <img src="../images/banner.jpeg" class="w-full h-40 object-cover" alt="College Banner">
+        <!--  MARQUEE  -->
+        <div class="marquee-container py-2">
+            <p class="marquee-text text-stone-700">
+                Admissions Open 2026 &nbsp; • &nbsp;Re-Accredited by NAAC with 'B' Grade &nbsp; • &nbsp; Excellence in
+                Arts & Science Education
+            </p>
+        </div>
+
+        <div class="container mx-auto py-3 relative z-50">
+            <div class="flex justify-between items-center">
+                <div></div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:flex justify-center items-center pt-2 color-blue-600">
+                <div class="flex items-center justify-center flex-wrap gap-x-5 gap-y-2" id="navbar">
+                    <a href="./index.html" class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Home</a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="relative group">
+                        <a href="./about.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>About us</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./about.html#vision-mission"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vision
+                                    & Mission</a>
+                                <a href="./about.html#principal-desk"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Principal
+                                    Desk</a>
+                                <a href="./officeAdmin.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Office
+                                    Administration</a>
+                                <a href="./RTI.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RTI</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Departments Dropdown -->
+                    <a href="./faculty.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Faculty</a>
+
+                    <!-- Admission Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Admission</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Admission
+                                    Process</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">View
+                                    Prospectus</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Rules & Regulation</a>
+                                <a href="./calender.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Calender</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./courses.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Courses</a>
+
+                    <!-- Infrastructure Dropdown -->
+                    <div class="relative group">
+                        <a href="./infrastructure.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Infrastructure</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./infrastructure.html#library"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Library</a>
+                                <a href="./infrastructure.html#computer-lab"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Computer
+                                    Laboratory</a>
+                                <a href="./infrastructure.html#playground"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Play
+                                    Ground</a>
+                                <a href="./infrastructure.html#auditorium"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Auditorium</a>
+                                <a href="./infrastructure.html#campus-life"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vibrant
+                                    Campus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVITIES Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Activities</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NIRF</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">ARIIA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Guidance & Placement Cell</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Rotaract
+                                    club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NSS</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RUSA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Red
+                                    Ribbon club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Youth
+                                    Red Cross</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Reports</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="../pdfs/Naac.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NAAC</a>
+                                <a href="../pdfs/LOA Report 24-25.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="./gallery.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a>
+                    <a href="./index.html#contact"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Contact
+                        us</a>
+                    <a href="https://student-registration-frontend-nine.vercel.app/login"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white" target="_blank">Login</a>
+                </div>
+            </nav>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t relative z-50">
+            <a href="./index.html" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+            <a href="./about.html" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
+            <a href="./faculty.html" class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
+            <a href="./courses.html" class="block px-4 py-2 hover:bg-gray-100">Courses</a>
+            <a href="../pdfs/Naac.pdf" class="block px-4 py-2 hover:bg-gray-100">NAAC</a>
+            <a href="./index.html#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+        </div>
+        
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-6">
+        <div class="text-center mb-4">
+            <h2 id="pageTitle"
+                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-amber-600">
+                Meet Our Faculty</h2>
+            <p id="pageSubtitle" class="text-gray-600 mt-2 text-lg">The dedicated educators shaping our future.</p>
+        </div>
+        <!-- Filter and Sort Controls -->
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4 sticky top-2 z-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Search by name..."
+                        class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <select id="departmentFilter"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    aria-label="Filter by department">
+                    <option value="all">All Departments</option>
+                </select>
+                <select id="sortOptions"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    aria-label="Sort profiles">
+                    <option value="name-asc">Sort by Name (A-Z)</option>
+                    <option value="name-desc">Sort by Name (Z-A)</option>
+                    <option value="dept-asc">Sort by Department (A-Z)</option>
+                    <option value="dept-desc">Sort by Department (Z-A)</option>
+                    <option value="year-newest">Sort by Year Joined (Newest)</option>
+                    <option value="year-oldest">Sort by Year Joined (Oldest)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Faculty Profiles Container -->
+        <div id="profiles-container" class="space-y-4">
+            <!-- This will be populated dynamically -->
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loader"></div>
+        <div id="noProfilesMessage" class="hidden text-center text-gray-500 mt-12">
+            No faculty profiles found.
+        </div>
+    </main>
+
+    <!-- View Profile Modal -->
+    <div id="viewProfileModal"
+        class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300 overflow-y-auto">
+        <div
+            class="modal-content bg-white w-full max-w-lg rounded-xl shadow-2xl transform scale-95 my-auto relative text-center">
+            <!-- Close button -->
+            <button id="closeViewModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 z-10"
+                aria-label="Close profile view">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Profile Image Wrapper -->
+            <div class="pt-12 px-8">
+                <img id="view-profile-img" src="" alt="Profile picture"
+                    class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-lg"
+                    onerror=`this.onerror="null";this.src="https://placehold.co/400x400/94a3b8/ffffff?text=Image;"`>
+            </div>
+
+            <!-- Profile Details -->
+            <div class="p-8 pt-4">
+                <h2 id="view-profile-name" class="text-3xl font-bold mt-1"></h2>
+                <p id="view-profile-role" class="text-gray-600 text-lg"></p>
+                <div class="mt-6 border-t pt-6 space-y-2 text-sm text-gray-700 text-left">
+                    <p><strong>Date of Birth:</strong> <span id="view-profile-dob"></span></p>
+                    <p><strong>Date of Joining:</strong> <span id="view-profile-joined"></span></p>
+                    <p><strong>Qualifications:</strong> <span id="view-profile-qualifications"></span></p>
+                    <p><strong>Specialization:</strong> <span id="view-profile-spec"></span></p>
+                    <p><strong>Teaching Experience:</strong> <span id="view-profile-exp"></span></p>
+                    <p><strong>Email:</strong> <a id="view-profile-email" href="#"
+                            class="text-yellow-600 hover:underline"></a></p>
+                    <p><strong>Phone:</strong> <span id="view-profile-phone"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="image-viewer-modal"
+        class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="relative">
+            <img id="full-image" src="" alt="Full size profile picture"
+                class="max-w-full max-h-[90vh] rounded-lg shadow-lg">
+            <button id="close-image-viewer"
+                class="absolute -top-4 -right-4 text-white bg-gray-800 rounded-full w-10 h-10 text-2xl hover:bg-gray-900">&times;</button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-sm text-gray-500">&copy; Perunthalaivar Kamarajar Arts College. All rights
+                reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- LOCAL DATA STORE ---
+            let allFaculty = [
+                // BCA Department
+                {
+                    "id": "bca1",
+                    "name": "Mr. R. Vaittilingame",
+                    "role": "Assistant Professor & Head",
+                    "dob": "1973-05-07",
+                    "joinedDate": "2017-07-17",
+                    "qualifications": "B.Sc (Maths), MCA, M.Phil, BLIS, UGC NET - 2013",
+                    "department": "BCA",
+                    "specialization": "Data Structures, Computer Algorithms, Operating Systems",
+                    "teachingExperience": "16 Years",
+                    "email": "suthavaitti@gmail.com",
+                    "phoneNo": "9629878374",
+                    "img": "../faculty_images/Mr. R. Vaittilingame.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "bca2",
+                    "name": "Dr. R. Muthamizhan",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1982-03-24",
+                    "joinedDate": "2007-01-24",
+                    "qualifications": "B.Sc(Maths), MCA, M.Phil, PhD - 2013",
+                    "department": "BCA",
+                    "specialization": "C Programming, C++ Programming, Java",
+                    "teachingExperience": "18 Years",
+                    "email": "tamizh24var@gmail.com",
+                    "phoneNo": "9487977051",
+                    "img": "../faculty_images/Dr.R.Muthamizhan.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "bca3",
+                    "name": "Mr. F. Antony Joseph",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1984-05-22",
+                    "joinedDate": "2015-03-03",
+                    "qualifications": "B.Sc.Ed, MCA, M.Phil, PhD(Pursuing)",
+                    "department": "BCA",
+                    "specialization": "Web Technology, .Net Framework, SQL",
+                    "teachingExperience": "14 Years",
+                    "email": "Anto2422@gmail.com",
+                    "phoneNo": "9843377422",
+                    "img": "../faculty_images/Mr. F. Antony Joseph.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "bca4",
+                    "name": "Mrs. J. Vijaya Barathy",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1988-09-01",
+                    "joinedDate": "2012-08-13",
+                    "qualifications": "B.Sc(CS), M.Sc(CS), MCA, M.Phil, PhD(Pursuing)",
+                    "department": "BCA",
+                    "specialization": "Digital Electronics, Web Technology, C# Programming",
+                    "teachingExperience": "13 Years",
+                    "email": "barathyviji01@dhtepdy.edu.in",
+                    "phoneNo": "8678915454",
+                    "img": "../faculty_images/Mrs. J. Vijaya Barathy.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "bca5",
+                    "name": "Dr. R. Vasundhara Devi",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1975-03-19",
+                    "joinedDate": "2020-12-01",
+                    "qualifications": "B.Sc(CS), MCA, M.Tech, PhD(CSE) – 2020, UGC-NET – 2017, TN-SET – 2017",
+                    "department": "BCA",
+                    "specialization": "Computer Networks, DBMS, Machine Learning",
+                    "teachingExperience": "4.5 Years",
+                    "email": "vasumohane@gmail.com",
+                    "phoneNo": "9488494441",
+                    "img": "../faculty_images/Dr. R. Vasundhara Devi.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "bca6",
+                    "name": "Mr. T. Bharathi",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1987-03-24",
+                    "joinedDate": "2021-01-18",
+                    "qualifications": "B.Sc(Statistics), MCA, M.Phil, UGC-NET-2018",
+                    "department": "BCA",
+                    "specialization": "Python, Software Engineering, IT Project Management",
+                    "teachingExperience": "4.7 Years",
+                    "email": "Bharathi.t.mca@gmail.com",
+                    "phoneNo": "9789544824",
+                    "img": "../faculty_images/Mr. T. Bharathi.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "bca7",
+                    "name": "Mr. V. Venkateswaran",
+                    "role": "Lab Assistant (STC)",
+                    "dob": "1979-11-12",
+                    "joinedDate": "2013-02-20",
+                    "qualifications": "BCA, MCA, M.Tech, MBA",
+                    "department": "BCA",
+                    "specialization": "Data Mining, Distributed System, Software Engineering",
+                    "teachingExperience": "12 Years",
+                    "email": "venkateshwaran.veeran@gmail.com",
+                    "phoneNo": "9789338410",
+                    "img": "../faculty_images/Mr. V. Venkateswaran.png",
+                    "isBlocked": false
+                },
+                // Maths Department
+                {
+                    "id": "math1",
+                    "name": "Dr. S. Kanaga Vel",
+                    "role": "Assistant Professor & Principal (i/c)",
+                    "dob": "1966-02-08",
+                    "joinedDate": "2001-08-13",
+                    "qualifications": "B.Sc(Maths), M.Sc(Maths), M.Phil, PhD- 1999, NET- 1990",
+                    "department": "Maths",
+                    "specialization": "ODE, PDE, Analysis, Algebra",
+                    "teachingExperience": "24 Years",
+                    "email": "skanagavel@dhtepdy.edu.in",
+                    "phoneNo": "9360046415",
+                    "img": "../faculty_images/Dr.S. Kanaga Vel.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "math2",
+                    "name": "Dr. Coumaressane",
+                    "role": "Assistant Professor",
+                    "dob": "1973-03-21",
+                    "joinedDate": "2003-03-28",
+                    "qualifications": "B.Sc(Maths), M.Sc(Maths), M.Phil, PhD- 2006, CSIR UGC NET",
+                    "department": "Maths",
+                    "specialization": "Abstract Algebra, Graph Theory, Fuzzy Algebra",
+                    "teachingExperience": "22 Years",
+                    "email": "coumaressane.s@dhtepdy.edu.in",
+                    "phoneNo": "8825969869",
+                    "img": "../faculty_images/Dr.  Coumaressane.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "math3",
+                    "name": "Dr. G. Rajmohan",
+                    "role": "Head & Assistant Professor",
+                    "dob": "1974-07-24",
+                    "joinedDate": "2014-02-27",
+                    "qualifications": "B.Sc(Maths), M.Sc(Maths), M.Phil, PhD- 2010",
+                    "department": "Maths",
+                    "specialization": "Number Theory",
+                    "teachingExperience": "26 Years",
+                    "email": "rajmohan@dhtepdy.edu.in",
+                    "phoneNo": "9443459895",
+                    "img": "../faculty_images/Dr.G.Rajmohan.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "math4",
+                    "name": "Dr. J. Udayageetha",
+                    "role": "Assistant Professor",
+                    "dob": "1989-06-04",
+                    "joinedDate": "2014-02-28",
+                    "qualifications": "B.Sc(Maths), M.Sc(Maths), M.Phil, PhD- 2019, SET- 2012",
+                    "department": "Maths",
+                    "specialization": "Stochastic Models, Algebra",
+                    "teachingExperience": "11 Years",
+                    "email": "udayageetha@dhtepdy.edu.in",
+                    "phoneNo": "9791884809",
+                    "img": "../faculty_images/Dr J Udayageetha.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "math5",
+                    "name": "Mr. V C Kalimuthu",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1987-11-20",
+                    "joinedDate": "2013-08-07",
+                    "qualifications": "B.Sc(Maths), M.Sc(Maths), TNSET- 2013",
+                    "department": "Maths",
+                    "specialization": "Topology, Algebra, Graph Theory",
+                    "teachingExperience": "12 Years",
+                    "email": "vckaliedun@gmail.com",
+                    "phoneNo": "9042305253",
+                    "img": "../faculty_images/Mr. V C Kalimuthu.png",
+                    "isBlocked": false
+                },
+                // English Department
+                {
+                    "id": "eng1",
+                    "name": "Mrs. T. Uma",
+                    "role": "Head & Assistant Professor",
+                    "dob": "1981-07-15",
+                    "joinedDate": "2009-06-15",
+                    "qualifications": "BA(English), MA(English), M.Phil, SET, PhD(Pursuing)",
+                    "department": "English",
+                    "specialization": "Not specified",
+                    "teachingExperience": "20 Years",
+                    "email": "write2umaa@gmail.com",
+                    "phoneNo": "9629345764",
+                    "img": "../faculty_images/Mrs. T Uma.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "eng2",
+                    "name": "Mrs. N. Rajeswari",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1980-08-04",
+                    "joinedDate": "2011-11-02",
+                    "qualifications": "BA(English), MA(English), M.Phil, PhD(Pursuing)",
+                    "department": "English",
+                    "specialization": "Not specified",
+                    "teachingExperience": "14 Years",
+                    "email": "Rajeswarimaria48@gmail.com",
+                    "phoneNo": "9944390332",
+                    "img": "../faculty_images/Mrs.  N. Rajeswari.png",
+                    "isBlocked": false
+                },
+                // Tourism Department
+                {
+                    "id": "tour1",
+                    "name": "Dr. Sabu K Thankappan",
+                    "role": "Assistant Professor & Head",
+                    "dob": "1977-02-07",
+                    "joinedDate": "2009-02-19",
+                    "qualifications": "B.Sc (Botany), MTA, M.Phil (Tourism), PhD",
+                    "department": "Tourism",
+                    "specialization": "Eco Tourism, Tourism Products, Sustainable Tourism",
+                    "teachingExperience": "16 Years",
+                    "email": "sabuthankappan@gmail.com",
+                    "phoneNo": "9488827840",
+                    "img": "../faculty_images/Dr. Sabu K Thankappan.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tour2",
+                    "name": "Dr. I. Kathirvel",
+                    "role": "Assistant Professor",
+                    "dob": "1975-09-18",
+                    "joinedDate": "2009-02-05",
+                    "qualifications": "BBA, MTA, M.Phil (Tourism), PhD",
+                    "department": "Tourism",
+                    "specialization": "Tourism Products, Hotel Management, HRM",
+                    "teachingExperience": "16 Years",
+                    "email": "kathirananth@gmail.com",
+                    "phoneNo": "9488242597",
+                    "img": "../faculty_images/Dr. I Kathirvel.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tour3",
+                    "name": "C. Vaigai",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1987-04-01",
+                    "joinedDate": "2011-01-10",
+                    "qualifications": "B.Com, M.Com, MBA, UGC- NET, PhD(Pursuing)",
+                    "department": "Tourism",
+                    "specialization": "Finance, Marketing, Business Law",
+                    "teachingExperience": "14 Years",
+                    "email": "vaigaic@gmail.com",
+                    "phoneNo": "9600605071",
+                    "img": "../faculty_images/C.Vaigai.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tour4",
+                    "name": "Dr. A. Karthik",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1986-02-09",
+                    "joinedDate": "2021-02-18",
+                    "qualifications": "BCA, MBA (Tourism), PhD, NET",
+                    "department": "Tourism",
+                    "specialization": "Alternative Tourism, Tourism Products, Travel Agency and Tour Operation",
+                    "teachingExperience": "5 Years",
+                    "email": "karthi.fbu@gmail.com",
+                    "phoneNo": "9790095202",
+                    "img": "../faculty_images/Dr. A. Karthik.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tour5",
+                    "name": "Dr. A. Perumal",
+                    "role": "Assistant Professor in History",
+                    "dob": "1980-05-24",
+                    "joinedDate": "2020-03-05",
+                    "qualifications": "BA(History), MA(History), M.Phil, SLET, PhD-2014",
+                    "department": "Tourism",
+                    "specialization": "Not specified",
+                    "teachingExperience": "5 Years",
+                    "email": "perumalphd@gmaiul.com",
+                    "phoneNo": "9944542470",
+                    "img": "../faculty_images/Dr. A. Perumal.png",
+                    "isBlocked": false
+                },
+                // Tamil Department
+                {
+                    "id": "tam1",
+                    "name": "Dr. T. Anbuchelvan",
+                    "role": "Assistant Professor in Tamil",
+                    "dob": "1980-02-20",
+                    "joinedDate": "2009-06-13",
+                    "qualifications": "M.A.(TAMIL), M.A.(SOCIOLOGY), M.A.(LINGUISTICS), Dip in Tholkapiayam & Sangam Literature, Ph.D., UGC - NET",
+                    "department": "Tamil",
+                    "specialization": "Grammar, Modern Lit, Sangam Lit",
+                    "teachingExperience": "16 Years",
+                    "email": "anbuchselvan@dhtepdy.edu.in",
+                    "phoneNo": "9994477028",
+                    "img": "../faculty_images/Dr. T. Anbuchelvan.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tam2",
+                    "name": "Dr. N. J. Saravanan",
+                    "role": "Assistant Professor in Tamil",
+                    "dob": "1979-11-27",
+                    "joinedDate": "2009-06-13",
+                    "qualifications": "M.A.(TAMIL), M.A.(ENGLISH), M.Phil., Dip in Linguistics, Dip in Folklore, Ph.D., UGC-NET-JRF, Gold medal in M.A. Tamil and M.Phil",
+                    "department": "Tamil",
+                    "specialization": "Religious Poem, Modern Lit, Sangam Lit",
+                    "teachingExperience": "16 years",
+                    "email": "saravanannj2020@dhtepdy.edu.in",
+                    "phoneNo": "8144918477",
+                    "img": "../faculty_images/Dr. N. J. Saravanan.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tam3",
+                    "name": "Dr. G. Savundravalli @ Sudha",
+                    "role": "Assistant Professor in Tamil",
+                    "dob": "1977-10-31",
+                    "joinedDate": "2009-06-15",
+                    "qualifications": "M.A.(TAMIL), M.A.(linguistics), M.Phil., Dip in Anthropology, DMA., Ph.D., UGC-NET, Gold Medal in M. Phil",
+                    "department": "Tamil",
+                    "specialization": "History of Tamil Nadu and Puducherry, Grammar, Sangam Lit.",
+                    "teachingExperience": "16 years",
+                    "email": "gsudha2010@gmail.com",
+                    "phoneNo": "9944756729",
+                    "img": "../faculty_images/Dr.G.SAVUNDRAVALLI @ SUDHA.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tam4",
+                    "name": "Mr. A. Sivakumar",
+                    "role": "Assistant Professor in Tamil",
+                    "dob": "1977-05-29",
+                    "joinedDate": "2021-10-27",
+                    "qualifications": "M.A., M.Phil., M.Ed., (Ph.D)., UGC-NET",
+                    "department": "Tamil",
+                    "specialization": "Mass Media, Grammar, Modern Lit",
+                    "teachingExperience": "4 Years",
+                    "email": "sivkmr.ji@gmail.com",
+                    "phoneNo": "9159106424",
+                    "img": "../faculty_images/Mr. A. Sivakumar.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tam5",
+                    "name": "Dr. N. Pougajendy",
+                    "role": "Assistant Professor in Tamil (STC)",
+                    "dob": "1966-12-06",
+                    "joinedDate": "2010-08-23",
+                    "qualifications": "M.A., M.Phil., Ph.D., B.Ed.",
+                    "department": "Tamil",
+                    "specialization": "Grammar, Religious Poem, Sangam Lit",
+                    "teachingExperience": "23 Years",
+                    "email": "narayanan.pougajendy@gmail.com",
+                    "phoneNo": "9486417267",
+                    "img": "../faculty_images/Dr.N.POUGAJENDY.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "tam6",
+                    "name": "Dr. M. Randyane",
+                    "role": "Assistant Professor in Tamil (STC)",
+                    "dob": "1978-02-23",
+                    "joinedDate": "2022-01-23",
+                    "qualifications": "M.A., M.Phil., Dip in Folklore., Dip in Anthropology., UGC-NET",
+                    "department": "Tamil",
+                    "specialization": "Sangam Lit., Religious Poem, Modern Lit.",
+                    "teachingExperience": "14 Years",
+                    "email": "randjane1978@gmail.com",
+                    "phoneNo": "7708531409",
+                    "img": "../faculty_images/Dr. M. Randyane.png",
+                    "isBlocked": false
+                },
+                // Commerce Department
+                {
+                    "id": "com1",
+                    "name": "Dr. A. Senthamil Raja",
+                    "role": "Assistant Professor & Head",
+                    "dob": "1980-02-17",
+                    "joinedDate": "2015-02-10",
+                    "qualifications": "B.Com, M.Com, M.Com (CA), M.Phil, M.B.A., Ph.D., UGC – NET",
+                    "department": "Commerce",
+                    "specialization": "Human Resource Management, Financial Accounting, Income Tax",
+                    "teachingExperience": "12 Years",
+                    "email": "artscomeyou@dhtepdy.edu.in",
+                    "phoneNo": "9994499579",
+                    "img": "../faculty_images/Dr. A. Senthamil Raja.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "com2",
+                    "name": "Mrs. M. Ragini",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1990-01-03",
+                    "joinedDate": "2020-12-01",
+                    "qualifications": "B.Com (CS)., M.Com., M.Phil (CS)., Ph.D – Pursuing, SET – Qualified 2017",
+                    "department": "Commerce",
+                    "specialization": "Human Resource Management, Financial Accounting, Business Law",
+                    "teachingExperience": "6 Years",
+                    "email": "ragini.mk2015@gmail.com",
+                    "phoneNo": "9344461918",
+                    "img": "../faculty_images/Mrs. M. Ragini.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "com3",
+                    "name": "Mr. A. Fyros",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1983-06-03",
+                    "joinedDate": "2022-11-28",
+                    "qualifications": "B.Com, M.Com, M.Phil, Ph.D – Pursuing, SET-Qualified in October 2012",
+                    "department": "Commerce",
+                    "specialization": "Financial Accounting, Auditing, Principles of Marketing",
+                    "teachingExperience": "9 Years",
+                    "email": "khanpdy@gmail.com",
+                    "phoneNo": "9952474038",
+                    "img": "../faculty_images/Mr. A. Fyros.png",
+                    "isBlocked": false
+                },
+                {
+                    "id": "com4",
+                    "name": "Mr. R. Arun",
+                    "role": "Assistant Professor (STC)",
+                    "dob": "1995-02-14",
+                    "joinedDate": "2022-11-28",
+                    "qualifications": "B.Com (F T), M.Com (B.F), MBA (F.M), PGDFT, Ph.D – Pursuing, UGC NET Qualified in July 2019",
+                    "department": "Commerce",
+                    "specialization": "Business Organisation and Management, Company Law, Financial Accounting",
+                    "teachingExperience": "3 Years",
+                    "email": "arunr1421995@gmail.com",
+                    "phoneNo": "9500624518",
+                    "img": "../faculty_images/Mr. R. Arun.png",
+                    "isBlocked": false
+                }
+            ];
+            // --- DOM Elements ---
+            const profilesContainer = document.getElementById('profiles-container');
+            const loader = document.getElementById('loader');
+            const noProfilesMessage = document.getElementById('noProfilesMessage');
+            const viewProfileModal = document.getElementById('viewProfileModal');
+            const closeViewModalBtn = document.getElementById('closeViewModalBtn');
+            const imageViewerModal = document.getElementById('image-viewer-modal');
+            const closeImageViewerBtn = document.getElementById('close-image-viewer');
+            const fullImage = document.getElementById('full-image');
+            const searchInput = document.getElementById('searchInput');
+            const departmentFilter = document.getElementById('departmentFilter');
+            const sortOptions = document.getElementById('sortOptions');
+            // --- CORE FUNCTIONS ---
+            function createProfileCard(faculty) {
+                const card = document.createElement('div');
+                card.className = `profile-card group items-center`;
+                card.dataset.facultyId = faculty.id;
+                card.innerHTML = `
+                        <div class="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 p-2">
+                            <div class="w-full h-full rounded-full overflow-hidden profile-card-image-wrapper">
+                                <img src="${faculty.img}" alt="Profile picture of ${faculty.name}" class="w-full h-full object-cover profile-card-image" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/94a3b8/ffffff?text=Image';">
+                            </div>
+                        </div>
+                        <div class="flex-1 p-2 md:p-4 flex flex-col justify-center">
+                            <div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900">${faculty.name}</h3>
+                                <p class="text-sm md:text-base text-gray-600">${faculty.role}</p>
+                            </div>
+                            <div class="mt-2 md:mt-4 flex justify-between items-center">
+                                <button class="view-profile-btn text-sm font-semibold text-yellow-600 hover:text-yellow-800" aria-label="View full profile for ${faculty.name}">View Profile</button>
+                            </div>
+                        </div>
+                    `;
+                return card;
+            }
+
+            function renderProfiles() {
+                profilesContainer.innerHTML = '';
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedDept = departmentFilter.value;
+                const sortValue = sortOptions.value;
+                let filteredFaculty = allFaculty.filter(f => {
+                    const nameMatch = f.name.toLowerCase().includes(searchTerm);
+                    const deptMatch = selectedDept === 'all' || f.department === selectedDept;
+                    return nameMatch && deptMatch;
+                });
+                filteredFaculty.sort((a, b) => {
+                    switch (sortValue) {
+                        case 'name-asc':
+                            return a.name.localeCompare(b.name);
+                        case 'name-desc':
+                            return b.name.localeCompare(a.name);
+                        case 'dept-asc':
+                            return a.department.localeCompare(b.department);
+                        case 'dept-desc':
+                            return b.department.localeCompare(a.department);
+                        case 'year-newest':
+                            return new Date(b.joinedDate) - new Date(a.joinedDate);
+                        case 'year-oldest':
+                            return new Date(a.joinedDate) - new Date(b.joinedDate);
+                        default:
+                            return a.name.localeCompare(b.name);
+                    }
+                });
+                const groupedByDepartment = filteredFaculty.reduce((acc, faculty) => {
+                    const dept = faculty.department;
+                    if (!acc[dept]) acc[dept] = [];
+                    acc[dept].push(faculty);
+                    return acc;
+                }, {});
+                noProfilesMessage.classList.toggle('hidden', filteredFaculty.length > 0);
+                Object.keys(groupedByDepartment).sort().forEach(dept => {
+                    const deptSection = document.createElement('div');
+                    deptSection.className = 'mb-12';
+                    deptSection.innerHTML =
+                        `<h3 class="text-3xl font-bold text-gray-800 mb-6">${dept}</h3><div class="space-y-4 profile-list"></div>`;
+                    const profilesGrid = deptSection.querySelector('.profile-list');
+                    groupedByDepartment[dept].forEach(faculty => {
+                        profilesGrid.appendChild(createProfileCard(faculty));
+                    });
+                    profilesContainer.appendChild(deptSection);
+                });
+            }
+
+            function loadInitialData() {
+                loader.style.display = 'block';
+                setTimeout(() => {
+                    populateDepartments();
+                    renderProfiles();
+                    loader.style.display = 'none';
+                }, 500);
+            }
+            // --- MODAL & FORM HANDLING ---
+            function openModal(modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            }
+
+            function closeModal(modal) {
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+
+            function typewriterEffect(element, text, speed = 25) {
+                return new Promise(resolve => {
+                    let i = 0;
+                    element.textContent = ''; // Ensure it's empty before starting
+                    function typing() {
+                        if (i < text.length) {
+                            element.textContent += text.charAt(i);
+                            i++;
+                            setTimeout(typing, speed);
+                        } else {
+                            resolve(); // Resolve the promise when done
+                        }
+                    }
+                    typing();
+                });
+            }
+            async function openViewProfileModal(faculty) {
+                const elements = {
+                    img: document.getElementById('view-profile-img'),
+                    name: document.getElementById('view-profile-name'),
+                    role: document.getElementById('view-profile-role'),
+                    dob: document.getElementById('view-profile-dob'),
+                    joined: document.getElementById('view-profile-joined'),
+                    qualifications: document.getElementById('view-profile-qualifications'),
+                    spec: document.getElementById('view-profile-spec'),
+                    exp: document.getElementById('view-profile-exp'),
+                    phone: document.getElementById('view-profile-phone'),
+                    email: document.getElementById('view-profile-email')
+                };
+                elements.img.src = faculty.img;
+                elements.email.href = `mailto:${faculty.email}`;
+                // Clear all fields immediately before showing the modal
+                Object.values(elements).forEach(el => {
+                    if (el.tagName !== 'IMG') el.textContent = '';
+                });
+                openModal(viewProfileModal);
+                // Sequentially type out the details
+                await typewriterEffect(elements.name, faculty.name);
+                await typewriterEffect(elements.role, faculty.role);
+                await typewriterEffect(elements.dob, faculty.dob || "N/A");
+                await typewriterEffect(elements.joined, faculty.joinedDate || "N/A");
+                await typewriterEffect(elements.qualifications, faculty.qualifications || "N/A");
+                await typewriterEffect(elements.spec, faculty.specialization || "N/A");
+                await typewriterEffect(elements.exp, faculty.teachingExperience || "N/A");
+                await typewriterEffect(elements.email, faculty.email || "N/A");
+                await typewriterEffect(elements.phone, faculty.phoneNo || "N/A");
+            }
+            // --- UTILITIES ---
+            function debounce(func, delay) {
+                let timeout;
+                return function(...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), delay);
+                };
+            }
+
+            function populateDepartments() {
+                const departments = [...new Set(allFaculty.map(f => f.department))].sort();
+                const currentValue = departmentFilter.value;
+                departmentFilter.innerHTML = '<option value="all">All Departments</option>';
+                departments.forEach(dept => {
+                    const option = document.createElement('option');
+                    option.value = dept;
+                    option.textContent = dept;
+                    departmentFilter.appendChild(option);
+                });
+                departmentFilter.value = departments.includes(currentValue) ? currentValue : 'all';
+            }
+            // --- INITIALIZATION & EVENT LISTENERS ---
+            function init() {
+                loadInitialData();
+                searchInput.addEventListener('input', debounce(renderProfiles, 300));
+                departmentFilter.addEventListener('change', renderProfiles);
+                sortOptions.addEventListener('change', renderProfiles);
+                closeViewModalBtn.addEventListener('click', () => closeModal(viewProfileModal));
+                viewProfileModal.addEventListener('click', (e) => {
+                    if (e.target.id === 'viewProfileModal') closeModal(viewProfileModal);
+                });
+                closeImageViewerBtn.addEventListener('click', () => closeModal(imageViewerModal));
+                imageViewerModal.addEventListener('click', (e) => {
+                    if (e.target.id === 'image-viewer-modal') closeModal(imageViewerModal);
+                });
+                profilesContainer.addEventListener('click', (e) => {
+                    const card = e.target.closest('.profile-card');
+                    if (!card) return;
+                    const facultyId = card.dataset.facultyId;
+                    const faculty = allFaculty.find(f => f.id === facultyId);
+                    if (!faculty) return;
+                    if (e.target.closest('.view-profile-btn')) {
+                        openViewProfileModal(faculty);
+                    } else if (e.target.closest('.profile-card-image-wrapper')) {
+                        fullImage.src = faculty.img;
+                        openModal(imageViewerModal);
+                    }
+                });
+            }
+            init();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - University Management</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        .auth-required {
+            display: none;
+            /* Hidden by default, shown via JS */
+        }
+    </style>
+</head>
+
+<body>
+
+   <!--  HEADER  -->
+    <header class="bg-white shadow-md relative z-50">
+
+        <img src="../images/banner.jpeg" class="w-full h-40 object-cover" alt="College Banner">
+        <!--  MARQUEE  -->
+        <div class="marquee-container py-2">
+            <p class="marquee-text text-stone-700">
+                Admissions Open 2026 &nbsp; • &nbsp;Re-Accredited by NAAC with 'B' Grade &nbsp; • &nbsp; Excellence in
+                Arts & Science Education
+            </p>
+        </div>
+
+        <div class="container mx-auto py-3 relative z-50">
+            <div class="flex justify-between items-center">
+                <div></div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:flex justify-center items-center pt-2 color-blue-600">
+                <div class="flex items-center justify-center flex-wrap gap-x-5 gap-y-2" id="navbar">
+                    <a href="./index.html" class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Home</a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="relative group">
+                        <a href="./about.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>About us</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./about.html#vision-mission"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vision
+                                    & Mission</a>
+                                <a href="./about.html#principal-desk"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Principal
+                                    Desk</a>
+                                <a href="./officeAdmin.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Office
+                                    Administration</a>
+                                <a href="./RTI.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RTI</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Departments Dropdown -->
+                    <a href="./faculty.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Faculty</a>
+
+                    <!-- Admission Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Admission</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Admission
+                                    Process</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">View
+                                    Prospectus</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Rules & Regulation</a>
+                                <a href="./calender.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Calender</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./courses.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Courses</a>
+
+                    <!-- Infrastructure Dropdown -->
+                    <div class="relative group">
+                        <a href="./infrastructure.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Infrastructure</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./infrastructure.html#library"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Library</a>
+                                <a href="./infrastructure.html#computer-lab"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Computer
+                                    Laboratory</a>
+                                <a href="./infrastructure.html#playground"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Play
+                                    Ground</a>
+                                <a href="./infrastructure.html#auditorium"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Auditorium</a>
+                                <a href="./infrastructure.html#campus-life"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vibrant
+                                    Campus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVITIES Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Activities</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NIRF</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">ARIIA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Guidance & Placement Cell</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Rotaract
+                                    club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NSS</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RUSA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Red
+                                    Ribbon club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Youth
+                                    Red Cross</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Reports</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="../pdfs/Naac.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NAAC</a>
+                                <a href="../pdfs/LOA Report 24-25.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="./gallery.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a>
+                    <a href="./index.html#contact"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Contact
+                        us</a>
+                    <a href="https://student-registration-frontend-nine.vercel.app/login"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white" target="_blank">Login</a>
+                </div>
+            </nav>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t relative z-50">
+            <a href="./index.html" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+            <a href="./about.html" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
+            <a href="./faculty.html" class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
+            <a href="./courses.html" class="block px-4 py-2 hover:bg-gray-100">Courses</a>
+            <a href="../pdfs/Naac.pdf" class="block px-4 py-2 hover:bg-gray-100">NAAC</a>
+            <a href="./index.html#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+        </div>
+        
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Courses View -->
+        <div id="courses-view">
+            <div class="flex flex-col md:flex-row justify-between md:items-center mb-8 gap-4">
+                <h2 class="text-3xl font-bold">Available Courses</h2>
+            </div>
+            <!-- Search Control -->
+            <div class="bg-white p-4 rounded-lg shadow-md mb-8">
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search courses..."
+                            class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses List -->
+            <div id="courses-list" class="space-y-6">
+                <!-- Course cards will be injected here -->
+            </div>
+
+        </div>
+
+        <!-- Single Course Details View (Initially Hidden) -->
+        <div id="course-details-view" class="hidden">
+            <div class="mb-8">
+                <button id="backToCoursesBtn"
+                    class="text-gray-600 hover:text-yellow-600 font-semibold flex items-center space-x-2 mb-4">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to All Courses</span>
+                </button>
+                <h2 id="course-title" class="text-4xl font-bold"></h2>
+                <p id="course-description" class="text-gray-600 mt-2 text-lg"></p>
+                <p id="course-seats-details" class="text-gray-800 mt-4 text-xl font-semibold"></p>
+            </div>
+
+            <!-- Files List -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Course Files</h3>
+                <div id="files-list" class="space-y-4">
+                    <!-- File items will be injected here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- STATIC DATA ---
+            let coursesData = [{
+                    id: 1,
+                    name: "B.A (Tamil)",
+                    description: "Bachelor of Arts in Tamil literature.",
+                    totalSeats: 60,
+                    seatsFilled: 45,
+                    files: [{
+                            id: 101,
+                            name: "Syllabus.pdf",
+                            description: "Complete course syllabus for the year.",
+                            size: 1200000,
+                            url: "#"
+                        },
+                        {
+                            id: 102,
+                            name: "Sangam_Literature.docx",
+                            description: "Introductory notes on Sangam period.",
+                            size: 45000,
+                            url: "#"
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "B.Sc (Mathematics)",
+                    description: "Bachelor of Science in Mathematics.",
+                    totalSeats: 60,
+                    seatsFilled: 55, // Adjusted to be within the new total
+                    files: []
+                },
+                {
+                    id: 3,
+                    name: "B.B.A (Tourism)",
+                    description: "Bachelor of Business Administration in Tourism.",
+                    totalSeats: 60,
+                    seatsFilled: 48,
+                    files: []
+                },
+                {
+                    id: 4,
+                    name: "B.C.A (Computer Applications)",
+                    description: "Bachelor of Computer Applications.",
+                    totalSeats: 60,
+                    seatsFilled: 58, // Adjusted to be within the new total
+                    files: [{
+                            id: 701,
+                            name: "Intro_to_Java.pptx",
+                            description: "Lecture slides for week 1.",
+                            size: 3400000,
+                            url: "#"
+                        },
+                        {
+                            id: 702,
+                            name: "Project_Guidelines.pdf",
+                            description: "Guidelines for the final semester project.",
+                            size: 500000,
+                            url: "#"
+                        }
+                    ]
+                },
+                {
+                    id: 5,
+                    name: "B.Com",
+                    description: "Bachelor of Commerce.",
+                    totalSeats: 60,
+                    seatsFilled: 59, // Adjusted to be within the new total
+                    files: []
+                }
+            ];
+            // --- DOM ELEMENTS ---
+            const coursesView = document.getElementById('courses-view');
+            const courseDetailsView = document.getElementById('course-details-view');
+            const coursesList = document.getElementById('courses-list');
+            const backToCoursesBtn = document.getElementById('backToCoursesBtn');
+            const courseTitle = document.getElementById('course-title');
+            const courseDescription = document.getElementById('course-description');
+            const courseSeatsDetails = document.getElementById('course-seats-details');
+            const filesListEl = document.getElementById('files-list');
+            const searchInput = document.getElementById('searchInput');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            // --- STATE ---
+            let currentCourseId = null;
+            // --- VIEW SWITCHING ---
+            function showCoursesView() {
+                courseDetailsView.classList.add('hidden');
+                coursesView.classList.remove('hidden');
+                currentCourseId = null;
+                renderCourses();
+            }
+
+            function showCourseDetailsView(courseId) {
+                const numericCourseId = parseInt(courseId, 10);
+                currentCourseId = numericCourseId;
+                const course = coursesData.find(c => c.id === numericCourseId);
+                if (!course) {
+                    showCoursesView();
+                    return;
+                }
+                courseTitle.textContent = course.name;
+                courseDescription.textContent = course.description;
+                courseSeatsDetails.textContent = `Total Seats: ${course.totalSeats}`;
+                coursesView.classList.add('hidden');
+                courseDetailsView.classList.remove('hidden');
+                renderFiles(course.files || []);
+            }
+            // --- RENDERING ---
+            function renderCourses() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let filteredCourses = coursesData.filter(c => c.name.toLowerCase().includes(searchTerm));
+                coursesList.innerHTML = '';
+                if (filteredCourses.length === 0) {
+                    coursesList.innerHTML = `<p class="text-gray-500 text-center">No courses found.</p>`;
+                    return;
+                }
+                filteredCourses.forEach(course => {
+                    const card = document.createElement('div');
+                    card.className =
+                        'course-card bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row justify-between items-start md:items-center';
+                    card.dataset.courseId = course.id;
+                    card.innerHTML = `
+                        <div class="cursor-pointer flex-grow mb-4 md:mb-0" data-action="view">
+                            <h3 class="text-xl font-bold mb-2">${course.name}</h3>
+                            <p class="text-gray-600">${course.description}</p>
+                        </div>
+                        <div class="flex items-center space-x-6 w-full md:w-auto flex-shrink-0">
+                            <p class="text-sm text-gray-500 whitespace-nowrap">Total Seats: <span class="font-bold text-gray-800">${course.totalSeats}</span></p>
+                        </div>`;
+                    coursesList.appendChild(card);
+                });
+            }
+
+            function renderFiles(files) {
+                filesListEl.innerHTML = '';
+                if (!files || files.length === 0) {
+                    filesListEl.innerHTML =
+                        `<p class="text-gray-500 text-center">No files have been added to this course yet.</p>`;
+                    return;
+                }
+                files.forEach(file => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'bg-white p-4 rounded-lg shadow-sm flex items-center';
+                    const downloadButton =
+                        `<a href="${file.url}" target="_blank" rel="noopener noreferrer" class="download-file-btn bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold hover:bg-yellow-200">Download</a>`;
+                    fileItem.innerHTML = `
+                        <i class="fas ${getFileIconClass(file.name)} text-2xl text-gray-500 mr-4"></i>
+                        <div class="flex-grow">
+                            <p class="font-semibold">${file.name}</p>
+                            <p class="text-sm text-gray-500">${file.description}</p>
+                        </div>
+                        <div class="text-sm text-gray-500 mx-4">${formatFileSize(file.size)}</div>
+                        <div class="flex items-center space-x-3">
+                            ${downloadButton}
+                        </div>`;
+                    filesListEl.appendChild(fileItem);
+                });
+            }
+            // --- COURSE ACTIONS ---
+            coursesList.addEventListener('click', (e) => {
+                const courseCard = e.target.closest('.course-card');
+                if (!courseCard) return;
+                const courseId = parseInt(courseCard.dataset.courseId, 10);
+                if (e.target.closest('[data-action="view"]')) {
+                    showCourseDetailsView(courseId);
+                    return;
+                }
+            });
+            // --- HELPERS & GENERIC LISTENERS ---
+            function getFileIconClass(fileName) {
+                const extension = fileName.split('.').pop().toLowerCase();
+                switch (extension) {
+                    case 'pdf':
+                        return 'fa-file-pdf';
+                    case 'doc':
+                    case 'docx':
+                        return 'fa-file-word';
+                    case 'xls':
+                    case 'xlsx':
+                        return 'fa-file-excel';
+                    case 'ppt':
+                    case 'pptx':
+                        return 'fa-file-powerpoint';
+                    case 'jpg':
+                    case 'jpeg':
+                    case 'png':
+                    case 'gif':
+                        return 'fa-file-image';
+                    case 'zip':
+                    case 'rar':
+                        return 'fa-file-archive';
+                    default:
+                        return 'fa-file';
+                }
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            backToCoursesBtn.addEventListener('click', showCoursesView);
+            searchInput.addEventListener('input', () => renderCourses());
+            // --- INITIAL LOAD ---
+            renderCourses();
+        });
+    </script>
+     <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-300 py-4 border-t-4 border-amber-700">
+        <div class="container mx-auto px-6 text-center flex flex-col items-center space-y-4">
+            <img src="../images/logo.jpg" alt="Perunthalaivar Kamarajar Arts College Logo"
+                class="h-16 w-16 object-contain bg-white p-1 rounded-full">
+            <h3 class="text-lg font-semibold tracking-wide">
+                Perunthalaivar Kamarajar Arts College
+            </h3>
+            <p class="text-sm text-gray-400">Pondicherry, India</p>
+            <div class="flex space-x-6 pt-2">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"
+                    class="text-gray-400 hover:text-blue-500 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24h11.495v-9.294H9.691V11.01h3.129V8.309c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.796.716-1.796 1.764v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.4 24 24 23.4 24 22.676V1.325C24 .6 23.4 0 22.675 0z" />
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"
+                    class="text-gray-400 hover:text-sky-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.924 0 .39.045.765.127 1.124-4.092-.205-7.719-2.165-10.148-5.144-.424.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.6 3.419-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14-7.496 14-13.986 0-.21 0-.423-.016-.637.961-.689 1.8-1.56 2.46-2.548z" />
+                    </svg>
+                </a>
+                <a href="mailto:info@pkartscollege.edu.in" aria-label="Email"
+                    class="text-gray-400 hover:text-amber-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </a>
+
+            </div>
+            <p class="text-sm text-gray-400">
+                Email:
+                <a href="mailto:info@pkartscollege.edu.in" class="hover:text-amber-400 transition">
+                    info@pkartscollege.edu.in
+                </a>
+            </p>
+            <p class="text-xs text-gray-500 pt-4">
+                © 2025 Perunthalaivar Kamarajar Arts College. All Rights Reserved.
+            </p>
+
+        </div>
+    </footer>
+</body>
+
+</html>

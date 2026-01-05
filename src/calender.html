@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Calendar 2025-2026</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        .calendar-container {
+            perspective: 1000px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .calendar-day:hover {
+            transform: scale(1.15) translateZ(30px);
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .calendar-day[data-message]:hover::after {
+            content: attr(data-message);
+            position: absolute;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1f2937;
+            /* gray-800 */
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            z-index: 20;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-slate-200 text-gray-800">
+ <!--  HEADER  -->
+    <header class="bg-white shadow-md relative z-50">
+
+        <img src="../images/banner.jpeg" class="w-full h-40 object-cover" alt="College Banner">
+        <!--  MARQUEE  -->
+        <div class="marquee-container py-2">
+            <p class="marquee-text text-stone-700">
+                Admissions Open 2026 &nbsp; • &nbsp;Re-Accredited by NAAC with 'B' Grade &nbsp; • &nbsp; Excellence in
+                Arts & Science Education
+            </p>
+        </div>
+
+        <div class="container mx-auto py-3 relative z-50">
+            <div class="flex justify-between items-center">
+                <div></div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:flex justify-center items-center pt-2 color-blue-600">
+                <div class="flex items-center justify-center flex-wrap gap-x-5 gap-y-2" id="navbar">
+                    <a href="./index.html" class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Home</a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="relative group">
+                        <a href="./about.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>About us</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./about.html#vision-mission"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vision
+                                    & Mission</a>
+                                <a href="./about.html#principal-desk"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Principal
+                                    Desk</a>
+                                <a href="./officeAdmin.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Office
+                                    Administration</a>
+                                <a href="./RTI.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RTI</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Departments Dropdown -->
+                    <a href="./faculty.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Faculty</a>
+
+                    <!-- Admission Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Admission</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Admission
+                                    Process</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">View
+                                    Prospectus</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Rules & Regulation</a>
+                                <a href="./calender.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Calender</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./courses.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Courses</a>
+
+                    <!-- Infrastructure Dropdown -->
+                    <div class="relative group">
+                        <a href="./infrastructure.html" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Infrastructure</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="./infrastructure.html#library"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Library</a>
+                                <a href="./infrastructure.html#computer-lab"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Computer
+                                    Laboratory</a>
+                                <a href="./infrastructure.html#playground"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Play
+                                    Ground</a>
+                                <a href="./infrastructure.html#auditorium"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Auditorium</a>
+                                <a href="./infrastructure.html#campus-life"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vibrant
+                                    Campus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVITIES Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Activities</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NIRF</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">ARIIA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">College
+                                    Guidance & Placement Cell</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Rotaract
+                                    club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NSS</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RUSA</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Red
+                                    Ribbon club</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Youth
+                                    Red Cross</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                            <span>Reports</span>
+                            <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-1">
+                                <a href="../pdfs/Naac.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NAAC</a>
+                                <a href="../pdfs/LOA Report 24-25.pdf"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="./gallery.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a>
+                    <a href="./index.html#contact"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Contact
+                        us</a>
+                    <a href="https://student-registration-frontend-nine.vercel.app/login"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white" target="_blank">Login</a>
+                </div>
+            </nav>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t relative z-50">
+            <a href="./index.html" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+            <a href="./about.html" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
+            <a href="./faculty.html" class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
+            <a href="./courses.html" class="block px-4 py-2 hover:bg-gray-100">Courses</a>
+            <a href="../pdfs/Naac.pdf" class="block px-4 py-2 hover:bg-gray-100">NAAC</a>
+            <a href="./index.html#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+        </div>
+        
+    </header>
+
+
+    <main class="p-4 md:p-8">
+        <div class="w-full max-w-7xl mx-auto bg-white/70 backdrop-blur-lg rounded-2xl shadow-lg p-6 md:p-8">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Left Side: Calendar -->
+                <div class="w-full md:w-2/3 calendar-container">
+                    <div class="flex items-center justify-between mb-6">
+                        <button id="prev-month" class="p-2 rounded-full hover:bg-gray-200 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <h2 id="month-year" class="text-2xl md:text-3xl font-bold text-center"></h2>
+                        <button id="next-month" class="p-2 rounded-full hover:bg-gray-200 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2 text-center font-medium text-gray-500 mb-2">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="calendar-dates" class="calendar-grid">
+                        <!-- Dates will be generated by JavaScript -->
+                    </div>
+                    <!-- Month Summary -->
+                    <div id="month-summary" class="mt-6">
+                        <!-- Summary will be generated by JavaScript -->
+                    </div>
+                </div>
+                <!-- Right Side: Events List -->
+                <div
+                    class="w-full md:w-1/3 border-t-4 md:border-t-0 md:border-l-4 border-gray-200 pt-6 md:pt-0 md:pl-8">
+                    <div id="events-list" class="h-96 overflow-y-auto pr-2">
+                        <!-- Events will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM Elements ---
+            const monthYearEl = document.getElementById('month-year');
+            const datesEl = document.getElementById('calendar-dates');
+            const prevMonthBtn = document.getElementById('prev-month');
+            const nextMonthBtn = document.getElementById('next-month');
+            const eventsListEl = document.getElementById('events-list');
+
+            // --- State ---
+            let currentDate = new Date(2025, 6, 1); // Start in July 2025
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            // --- Static Data ---
+            const governmentHolidays = {
+                 '2025-7-15': 'Independence Day','2025-7-16': 'De jure Transfer Day'
+, '2025-7-27': 'Ganesh Chaturthi', '2025-8-5': 'Milad-un-Nabi',
+                '2025-9-2': 'Gandhi Jayanti','2025-9-1':'Saraswathi Pooja/Ayudha Pooja',                '2025-9-20': 'Diwali','2025-10-1':'Puducherry Liberation Day',
+                '2025-11-25': 'Christmas Day', '2025-11-31': "New Year's Eve", '2026-0-1': "New Year's Day", '2026-0-13': 'Lohri',
+                '2026-0-14': 'Makar Sankranti / Pongal', '2026-0-26': 'Republic Day', '2026-1-27': 'Maha Shivaratri', '2026-2-2': 'Holi',
+                '2026-3-2': 'Good Friday', '2026-3-4': 'Easter Sunday','2026-5-6': 'Bakrid'
+            };
+            const importantDays = {};
+            const monthlyEvents = {
+                '2025-8-5': "Teachers' Day", '2025-10-14': "Children's Day", '2025-7-19': 'Raksha Bandhan',
+                '2025-8-15': 'National Sports Day', '2025-10-2': 'World Habitat Day',
+            };
+
+            // --- Functions ---
+            const getRunningSaturdayCount = (date) => {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                const dayOfMonth = date.getDate();
+                let count = 0;
+                for (let day = 1; day <= dayOfMonth; day++) {
+                    const d = new Date(year, month, day);
+                    if (d.getDay() === 6) {
+                        count++;
+                    }
+                }
+                return count;
+            };
+
+            const getDayInfo = (date, runningSaturdayCount) => {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                const day = date.getDate();
+                const dayOfWeek = date.getDay();
+                const dayId = `${year}-${month}-${day}`;
+
+                let type = 'working';
+                let color = '#3b82f6'; // Blue
+                let message = importantDays[dayId] || monthlyEvents[dayId] || '';
+
+                const isStaticGovHoliday = dayId in governmentHolidays;
+                const isWeekendHoliday = dayOfWeek === 0 || (dayOfWeek === 6 && (runningSaturdayCount === 2 || runningSaturdayCount === 4));
+
+                if (isStaticGovHoliday) {
+                    type = 'holiday';
+                    color = '#FF0800'; // Red (Govt. Holiday)
+                    message = governmentHolidays[dayId];
+                } else if (isWeekendHoliday) {
+                    type = 'holiday';
+                    color = '#B80F0A'; // Red (Holiday)
+                } else if (dayOfWeek === 6) { // Catches 1st, 3rd, 5th Saturdays
+                    type = 'neutral';
+                    color = '#22c55e'; // Green
+                }
+                
+                return { type, color, message };
+            };
+
+
+            const renderCalendar = () => {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                monthYearEl.textContent = `${monthNames[month]} ${year}`;
+                datesEl.innerHTML = '';
+
+                const firstDayOfMonth = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                for (let i = 0; i < firstDayOfMonth; i++) { datesEl.innerHTML += `<div></div>`; }
+
+                let saturdayCountForMonth = 0;
+                let workingDays = 0;
+                let holidays = 0;
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const date = new Date(year, month, day);
+
+                    if (date.getDay() === 6) {
+                        saturdayCountForMonth++;
+                    }
+
+                    const info = getDayInfo(date, saturdayCountForMonth);
+
+                    if (info.type === 'holiday') {
+                        holidays++;
+                    } else if (info.type === 'working') {
+                        workingDays++;
+                    }
+
+                    const dayEl = document.createElement('div');
+                    dayEl.className = `calendar-day flex items-center justify-center font-bold text-white text-lg`;
+                    dayEl.style.backgroundColor = info.color;
+                    dayEl.textContent = day;
+                    dayEl.dataset.id = `${year}-${month}-${day}`;
+                    if (info.message) { dayEl.dataset.message = info.message; }
+                    datesEl.appendChild(dayEl);
+                }
+
+                const summaryEl = document.getElementById('month-summary');
+                summaryEl.innerHTML = `
+                    <div class="flex justify-center gap-8 border-t-2 border-gray-200 pt-4">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-blue-600">${workingDays}</p>
+                            <p class="text-sm font-medium text-gray-600">Working Days</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-red-600">${holidays}</p>
+                            <p class="text-sm font-medium text-gray-600">Holidays</p>
+                        </div>
+                    </div>
+                `;
+
+                renderEventsList(year, month);
+                updateButtonStates();
+            };
+
+            const renderEventsList = (year, month) => {
+                eventsListEl.innerHTML = '';
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const lists = { important: [], monthly: [], govHoliday: [] };
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayId = `${year}-${month}-${day}`;
+                    if (dayId in governmentHolidays) lists.govHoliday.push({ day, message: governmentHolidays[dayId] });
+                    else if (dayId in importantDays) lists.important.push({ day, message: importantDays[dayId] });
+                    else if (dayId in monthlyEvents) lists.monthly.push({ day, message: monthlyEvents[dayId] });
+                }
+
+                const createSection = (title, events) => {
+                    if (events.length === 0) return null;
+                    const container = document.createElement('div');
+                    container.innerHTML = `<h4 class="text-lg font-semibold text-gray-700 mb-3">${title}</h4>`;
+                    const list = document.createElement('ul');
+                    list.className = 'list-disc pl-5 space-y-2';
+                    events.sort((a, b) => a.day - b.day).forEach(event => {
+                        list.innerHTML += `<li class="text-gray-700"><span class="font-bold text-blue-600">${event.day}:</span> ${event.message}</li>`;
+                    });
+                    container.appendChild(list);
+                    return container;
+                };
+
+                const sections = [
+                    createSection('Important Days', lists.important),
+                    createSection('Monthly Events', lists.monthly),
+                    createSection('Government Holidays', lists.govHoliday)
+                ].filter(Boolean);
+
+                sections.forEach((section, index) => {
+                    if (index > 0) {
+                        const separator = document.createElement('div');
+                        separator.className = 'mt-6 pt-6 border-t-4 border-gray-300';
+                        eventsListEl.appendChild(separator);
+                    }
+                    eventsListEl.appendChild(section);
+                });
+
+                if (sections.length === 0) {
+                    eventsListEl.innerHTML = '<p class="text-gray-500">No events scheduled for this month.</p>';
+                }
+            };
+
+            const updateButtonStates = () => {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                prevMonthBtn.disabled = (year === 2025 && month === 6);
+                prevMonthBtn.classList.toggle('opacity-50', prevMonthBtn.disabled);
+                nextMonthBtn.disabled = (year === 2026 && month === 5);
+                nextMonthBtn.classList.toggle('opacity-50', nextMonthBtn.disabled);
+            };
+
+            // --- Event Listeners ---
+            prevMonthBtn.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); });
+            nextMonthBtn.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); });
+
+            // --- Initial Load ---
+            renderCalendar();
+        });
+    </script>
+     <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-300 py-4 border-t-4 border-amber-700">
+        <div class="container mx-auto px-6 text-center flex flex-col items-center space-y-4">
+            <img src="../images/logo.jpg" alt="Perunthalaivar Kamarajar Arts College Logo"
+                class="h-16 w-16 object-contain bg-white p-1 rounded-full">
+            <h3 class="text-lg font-semibold tracking-wide">
+                Perunthalaivar Kamarajar Arts College
+            </h3>
+            <p class="text-sm text-gray-400">Pondicherry, India</p>
+            <div class="flex space-x-6 pt-2">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"
+                    class="text-gray-400 hover:text-blue-500 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24h11.495v-9.294H9.691V11.01h3.129V8.309c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.796.716-1.796 1.764v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.4 24 24 23.4 24 22.676V1.325C24 .6 23.4 0 22.675 0z" />
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"
+                    class="text-gray-400 hover:text-sky-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.924 0 .39.045.765.127 1.124-4.092-.205-7.719-2.165-10.148-5.144-.424.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.6 3.419-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14-7.496 14-13.986 0-.21 0-.423-.016-.637.961-.689 1.8-1.56 2.46-2.548z" />
+                    </svg>
+                </a>
+                <a href="mailto:info@pkartscollege.edu.in" aria-label="Email"
+                    class="text-gray-400 hover:text-amber-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </a>
+
+            </div>
+            <p class="text-sm text-gray-400">
+                Email:
+                <a href="mailto:info@pkartscollege.edu.in" class="hover:text-amber-400 transition">
+                    info@pkartscollege.edu.in
+                </a>
+            </p>
+            <p class="text-xs text-gray-500 pt-4">
+                © 2025 Perunthalaivar Kamarajar Arts College. All Rights Reserved.
+            </p>
+
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -36,7 +36,7 @@ A static website for Perunthalaivar Kamarajar Arts College, built to showcase th
 ## Technologies Used
 
 - HTML5
-- CSS3
+- CSS3 & Tailwindcss
 - JavaScript
 
 ## Installation

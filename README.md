@@ -42,7 +42,15 @@ A static website for Perunthalaivar Kamarajar Arts College, built to showcase th
 ## Installation
 
 1. Clone the repository
-2. Open `index.html` in a web browser
+2. Install the dependencies (Tailwindcss)
+```
+npm i 
+```
+3. Open `index.html` in a web browser
+4. If want to enhance then [Run tailwindcss to watch]
+```
+npm run dev 
+```
 3. No build process required
 
 ## Contributing

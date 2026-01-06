@@ -1,7 +1,7 @@
 // Header + Nav
 const header = document.getElementById("header-box").innerHTML = `<header class="bg-white shadow-md relative z-50">
 
-       <a href="#"><img src="../images/banner.jpeg" class="w-full h-40 object-cover" alt="College Banner"></a>
+       <a href="#"><img src="../images/images/banner.jpeg" class="w-full h-40 object-cover" alt="College Banner"></a>
         <!--  MARQUEE  -->
         <div class="marquee-container py-2">
             <p class="marquee-text text-stone-700">
@@ -61,7 +61,7 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
 
                     <!-- Admission Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                        <a href="./calender.html" class="nav-link text-gray-600 font-medium flex items-center">
                             <span>Admission</span>
                             <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -115,7 +115,7 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
                                 <a href="./infrastructure.html#playground"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Play
                                     Ground</a>
-                                <a href="./infrastructure.html#auditorium"
+                                <a href="./infrastructure.html"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Auditorium</a>
                                 <a href="./infrastructure.html#campus-life"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Vibrant
@@ -124,9 +124,9 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
                         </div>
                     </div>
 
-                    <!-- ACTIVITIES Dropdown -->
+                    <!-- Activities Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                        <a href="./activities.html" class="nav-link text-gray-600 font-medium flex items-center">
                             <span>Activities</span>
                             <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -165,7 +165,7 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
 
                     <!-- Report Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="nav-link text-gray-600 font-medium flex items-center">
+                        <a href="./reports.html" class="nav-link text-gray-600 font-medium flex items-center">
                             <span>Reports</span>
                             <svg class="w-5 h-5 ml-1 text-gray-600 transition-transform duration-300 group-hover:rotate-180"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -178,16 +178,20 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
                         <div
                             class="absolute z-50 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
                             <div class="py-1">
-                                <a href="../pdfs/Naac.pdf"
+                            <a href="./reports.html#LOA"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                                <a href="./reports.html#NAAC"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">NAAC</a>
-                                <a href="../pdfs/LOA Report 24-25.pdf"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AICTE</a>
+                                <a href="./reports.html#AISHE"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">AISHE</a>
+                                <a href="./reports.html#CertificatesOfEstablishment"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Certificates Of Establishment</a>
                             </div>
                         </div>
                     </div>
-                    <a href="./gallery.html"
-                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a>
-                    <a href="./index.html#contact"
+                   <!-- <a href="./gallery.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a> -->
+                    <a href="./contact.html"
                         class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Contact
                         us</a>
                     <a href="https://student-registration-frontend-nine.vercel.app/login"
@@ -204,7 +208,7 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
             <a href="./faculty.html" class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
             <a href="./courses.html" class="block px-4 py-2 hover:bg-gray-100">Courses</a>
             <a href="../pdfs/Naac.pdf" class="block px-4 py-2 hover:bg-gray-100">NAAC</a>
-            <a href="./index.html#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+            <a href="./contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
         </div>
         
     </header>`
@@ -212,7 +216,7 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
 // Footer
 const footer = document.getElementById("footer-box").innerHTML = `<footer class="bg-slate-900 text-gray-300 py-4 border-t-4 border-amber-700">
         <div class="container mx-auto px-6 text-center flex flex-col items-center space-y-4">
-            <img src="../images/logo.jpg" alt="Perunthalaivar Kamarajar Arts College Logo"
+            <img src="../images/images/logo.jpg" alt="Perunthalaivar Kamarajar Arts College Logo"
                 class="h-16 w-16 object-contain bg-white p-1 rounded-full">
             <h3 class="text-lg font-semibold tracking-wide">
                 Perunthalaivar Kamarajar Arts College

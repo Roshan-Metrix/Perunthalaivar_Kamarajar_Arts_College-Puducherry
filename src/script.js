@@ -46,11 +46,9 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
                                 <a href="./about.html#principal-desk"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Principal
                                     Desk</a>
-                                <a href="./about.html"
+                                <a href="./about.html#administration"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">Office
                                     Administration</a>
-                                <a href="./about.html"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-400 hover:text-gray-900">RTI</a>
                             </div>
                         </div>
                     </div>
@@ -189,11 +187,11 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
                             </div>
                         </div>
                     </div>
-                   <!-- <a href="./gallery.html"
-                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Gallery</a> -->
-                    <a href="./contact.html"
+                    <!-- <a href="./contact.html"
                         class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Contact
-                        us</a>
+                        us</a> -->
+                    <a href="./events.html"
+                        class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white">Events</a>
                     <a href="https://student-registration-frontend-nine.vercel.app/login"
                         class="nav-link text-gray-600 font-medium hover:bg-amber-500 hover:px-2 hover:rounded hover:text-white" target="_blank">Login</a>
                 </div>
@@ -216,43 +214,36 @@ const header = document.getElementById("header-box").innerHTML = `<header class=
 // Footer
 const footer = document.getElementById("footer-box").innerHTML = `<footer class="bg-slate-900 text-gray-300 py-4 border-t-4 border-amber-700">
         <div class="container mx-auto px-6 text-center flex flex-col items-center space-y-4">
-            <img src="../images/images/logo.jpg" alt="Perunthalaivar Kamarajar Arts College Logo"
-                class="h-16 w-16 object-contain bg-white p-1 rounded-full">
-            <h3 class="text-lg font-semibold tracking-wide">
-                Perunthalaivar Kamarajar Arts College
-            </h3>
-            <p class="text-sm text-gray-400">Pondicherry, India</p>
             <div class="flex space-x-6 pt-2">
-                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"
+                <a href="https://www.facebook.com/pkartscollege.pondicherry.3" target="_blank" aria-label="Facebook"
                     class="text-gray-400 hover:text-blue-500 transition">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24h11.495v-9.294H9.691V11.01h3.129V8.309c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.796.716-1.796 1.764v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.4 24 24 23.4 24 22.676V1.325C24 .6 23.4 0 22.675 0z" />
                     </svg>
                 </a>
-                <a href="https://twitter.com" target="_blank" aria-label="Twitter"
-                    class="text-gray-400 hover:text-sky-400 transition">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.924 0 .39.045.765.127 1.124-4.092-.205-7.719-2.165-10.148-5.144-.424.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.6 3.419-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14-7.496 14-13.986 0-.21 0-.423-.016-.637.961-.689 1.8-1.56 2.46-2.548z" />
-                    </svg>
-                </a>
                 <a href="mailto:info@pkartscollege.edu.in" aria-label="Email"
                     class="text-gray-400 hover:text-amber-400 transition">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/channel/UCohg-ht4SuDGkZkzmK-scyg" target="_blank" aria-label="Twitter"
+                    class="text-gray-400 hover:text-sky-400 transition">
+                    <svg class="w-7 h-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                         <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
                     </svg>
                 </a>
 
             </div>
             <p class="text-sm text-gray-400">
-                Email:
+                Contact:
                 <a href="mailto:info@pkartscollege.edu.in" class="hover:text-amber-400 transition">
                     info@pkartscollege.edu.in
                 </a>
             </p>
-            <p class="text-xs text-gray-500 pt-4">
+            <p class="text-xs text-gray-500">
                 © 2026 Perunthalaivar Kamarajar Arts College. All Rights Reserved.
             </p>
 

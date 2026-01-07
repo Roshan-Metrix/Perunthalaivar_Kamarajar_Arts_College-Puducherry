@@ -10,7 +10,7 @@
         .banner {
             width: 100%;
             height: 250px;
-            display: block;
+            display: blocks;
             object-fit: cover;
         }
 
@@ -32,7 +32,7 @@
 
         .typing-cursor::after {
             content: '|';
-            display: inline-block;
+            display: inline-blocks;
             animation: blink-caret 0.75s step-end infinite;
             color: #3B82F6;
             font-weight: bold;
@@ -91,6 +91,185 @@
         /* Modal Styles */
         #person-modal {
             transition: opacity 0.3s ease-in-out;
+        }
+
+        .flowchart-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            width: 100vw;
+            min-height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            padding: 40px 20px;
+            max-width: 1300px;
+            width: 100%;
+            position: relative;
+        }
+
+        .org-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 2px;
+            text-align: center;
+            letter-spacing: 1.5px;
+        }
+
+        .level {
+            display: flex;
+            justify-content: center;
+            gap: 56px;
+            width: 100%;
+            position: relative;
+        }
+
+        .sub-col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .blocks {
+            background: linear-gradient(180deg, #f4f4f2 0%, #f8f7f4 100%);
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(195, 100, 0, 0.13);
+            padding: 13px 36px;
+            min-width: 162px;
+            max-width: 230px;
+            text-align: center;
+            color: #654321;
+            font-weight: 600;
+            font-size: 1.06rem;
+            position: relative;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            border: 1.5px solid #e4a66e;
+        }
+
+        .blocks:hover {
+            box-shadow: 0 12px 36px rgba(195, 100, 0, 0.19);
+            background: linear-gradient(180deg, #ffecb3 0%, #ffc278 100%);
+        }
+
+        .blocks .tooltip {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 12px);
+            background: #3d2e0f;
+            color: #fff9e6;
+            padding: 7px 11px;
+            border-radius: 8px;
+            font-weight: 400;
+            font-size: 13px;
+            max-width: 204px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 18px rgba(70, 45, 7, 0.09);
+            z-index: 2;
+            white-space: normal;
+        }
+
+        .blocks:hover .tooltip {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Principal blocks special */
+        #principal {
+            position: relative;
+        }
+
+        #principal:hover::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+            width: 200px;
+            height: 200px;
+            background-image: url("../images/images/Principal_Ex.jpeg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Specific smaller height blockss for Director of Phy. Edn. and Asst. Librarian */
+        #director-phyedn,
+        #asst-librarian {
+            padding: 18px 24px;
+            min-width: 185px;
+            max-width: 220px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+        }
+
+        /* Connector lines (use absolutely positioned SVG) */
+        .connectors {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .level {
+                gap: 32px;
+            }
+
+            .blocks {
+                min-width: 135px;
+                font-size: 0.95rem;
+            }
+
+            #director-phyedn,
+            #asst-librarian {
+                min-width: 150px;
+                height: 70px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .level {
+                gap: 14px;
+                flex-wrap: wrap;
+            }
+
+            .blocks {
+                padding: 10px 18px;
+                font-size: 0.87rem;
+                min-width: 125px;
+                max-width: 150px;
+            }
+
+            #director-phyedn,
+            #asst-librarian {
+                min-width: 130px;
+                height: 60px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -166,7 +345,7 @@
                         <img src="../images/images/Principal_Ex.jpeg" alt="College Principal"
                             class="person-image rounded-full shadow-lg w-64 h-64 mx-auto object-cover clickable-person"
                             data-name="Principal's Name" data-title="Principal"
-                            data-img-src="https://placehold.co/600x600/FFFBEB/FBBF24?text=Principal"
+                            data-img-src="../images/images/Principal_Ex.jpeg"
                             data-message="Welcome to Perunthalaivar Kamarajar Arts College. We believe in the transformative power of education. Our dedicated faculty and staff are here to guide you on your journey of discovery, helping you to unlock your full potential and achieve your dreams. We look forward to a productive and inspiring academic year with you.">
                     </div>
                     <div class="md:w-2/3">
@@ -219,6 +398,67 @@
 
         <hr>
 
+        <section class="flowchart-wrapper bg-white" id="administration">
+            <div class="flowchart" id="flowchart">
+                <div class="org-title">ADMINISTRATIONS</div>
+                <div class="level" id="level1">
+                    <div class="blocks" id="chairman" tabindex="0">Chairman
+                        <div class="tooltip">Governing head of college administration.</div>
+                    </div>
+                </div>
+                <div class="level" id="level2">
+                    <div class="blocks" id="secretary" tabindex="0">Member Secretary
+                        <div class="tooltip">Supervises policy, reports to Chairman.</div>
+                    </div>
+                </div>
+                <div class="level" id="level3">
+                    <div class="blocks" id="principal" tabindex="0">Principal
+                        <div class="tooltip">Academic & operational head.</div>
+                    </div>
+                </div>
+                <div class="level" id="level4">
+                    <div class="sub-col">
+                        <div class="blocks" id="departments" tabindex="0">Departments
+                            <div class="tooltip">All academic departments (CSE, ECE, ME, etc).</div>
+                        </div>
+                        <div class="blocks" id="heads" tabindex="0">Heads
+                            <div class="tooltip">Department heads manage teaching/research.</div>
+                        </div>
+                        <div class="blocks" id="faculty" tabindex="0">Faculty Members
+                            <div class="tooltip">Faculty conduct teaching and student mentoring.</div>
+                        </div>
+                    </div>
+                    <div class="blocks" id="director-phyedn" tabindex="0">Director of Phy. Edn.
+                        <div class="tooltip">Manages sports and physical activity programs.</div>
+                    </div>
+                    <div class="blocks" id="asst-librarian" tabindex="0">Asst. Librarian
+                        <div class="tooltip">Manages library and academic resources.</div>
+                    </div>
+                    <div class="sub-col">
+                        <div class="blocks" id="office" tabindex="0">Office
+                            <div class="tooltip">Handles all office services and records.</div>
+                        </div>
+                        <div class="blocks" id="superintendent" tabindex="0">Superintendent
+                            <div class="tooltip">Office operations supervisor.</div>
+                        </div>
+                        <div class="blocks" id="assistant" tabindex="0">Assistant
+                            <div class="tooltip">Assists in clerical work.</div>
+                        </div>
+                        <div class="blocks" id="udc" tabindex="0">UDC
+                            <div class="tooltip">Upper division clerk (office management).</div>
+                        </div>
+                        <div class="blocks" id="storekeeper" tabindex="0">Store Keeper
+                            <div class="tooltip">Maintains inventory and store files.</div>
+                        </div>
+                        <div class="blocks" id="mts-security" tabindex="0">MTS (Gen.) & Security
+                            <div class="tooltip">General staff & campus security.</div>
+                        </div>
+                    </div>
+                </div>
+                <svg class="connectors" id="connectors" width="100%" height="100%"></svg>
+            </div>
+        </section>
+
     </main>
 
     <!-- Modal Structure -->
@@ -237,8 +477,8 @@
             class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 transition">&times;</button>
     </div>
 
-     <!-- Footer -->
-   <div id="footer-box"></div>
+    <!-- Footer -->
+    <div id="footer-box"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -338,6 +578,81 @@
                 }
             });
         });
+
+        function getblocksCenter(blocks) {
+            const rect = blocks.getBoundingClientRect();
+            const parentRect = document.getElementById('flowchart').getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2 - parentRect.left,
+                y: rect.top + rect.height / 2 - parentRect.top,
+            };
+        }
+
+        function connector(svg, start, end, color, width) {
+            const ns = "http://www.w3.org/2000/svg";
+            // Curve for vertical/horizontal splits
+            let path;
+            if (Math.abs(start.x - end.x) > 4) {
+                // L and curve path
+                let midY = (start.y + end.y) / 2;
+                path = `M ${start.x} ${start.y} V ${midY} H ${end.x} V ${end.y}`;
+            } else {
+                // straight vertical
+                path = `M ${start.x} ${start.y} V ${end.y}`;
+            }
+            const p = document.createElementNS(ns, 'path');
+            p.setAttribute('d', path);
+            p.setAttribute('stroke', color);
+            p.setAttribute('stroke-width', width);
+            p.setAttribute('fill', 'none');
+            p.setAttribute('marker-end', 'url(#arrowhead)');
+            svg.appendChild(p);
+        }
+
+        function clearSVG(svg) {
+            while (svg.firstChild) svg.removeChild(svg.firstChild);
+        }
+
+        function drawChartConnectors() {
+            const svg = document.getElementById('connectors');
+            clearSVG(svg);
+            // Arrowhead marker
+            const ns = "http://www.w3.org/2000/svg";
+            const defs = document.createElementNS(ns, "defs");
+            defs.innerHTML = `
+      <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2,2 L6,6 L2,10" fill="none" stroke="#e4a66e" stroke-width="2"/>
+      </marker>
+    `;
+            svg.appendChild(defs);
+            // Helper: connect two blocks IDs
+            function connect(fromId, toId) {
+                const from = getblocksCenter(document.getElementById(fromId));
+                const to = getblocksCenter(document.getElementById(toId));
+                connector(svg, {
+                    x: from.x,
+                    y: from.y + 24
+                }, {
+                    x: to.x,
+                    y: to.y - 24
+                }, "#e4a66e", 2.8);
+            }
+            // Helper vertical chain within .sub-col
+            function connectChain(ids) {
+                for (let i = 1; i < ids.length; i++) {
+                    connect(ids[i - 1], ids[i]);
+                }
+            }
+            // Connections as before
+            connect('chairman', 'secretary');
+            connect('secretary', 'principal');
+            ['departments', 'director-phyedn', 'asst-librarian', 'office'].forEach(toId => connect('principal', toId));
+            connect('departments', 'heads');
+            connect('heads', 'faculty');
+            connectChain(['office', 'superintendent', 'assistant', 'udc', 'storekeeper', 'mts-security']);
+        }
+        window.addEventListener('resize', drawChartConnectors);
+        window.addEventListener('load', drawChartConnectors);
     </script>
     <script src="./script.js"></script>
 </body>
